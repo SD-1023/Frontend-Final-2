@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --primary: #1b4b66;
   --primary-tint: #639599;
@@ -12,8 +17,6 @@
   --type-high-emphasis: #171520;
   --type-low-emphasis: #626262;
 }
-
 * {
   font-family: "Inter", sans-serif;
 }
-
