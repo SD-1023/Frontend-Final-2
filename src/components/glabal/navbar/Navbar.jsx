@@ -1,3 +1,7 @@
 export default function Navbar() {
-  return <div className="bg-color-primary">this is Navbar</div>;
+  return (
+    <div className="">
+      <img src="/assets/icons/menu.svg" alt="" />
+    </div>
+  );
 }
