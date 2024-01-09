@@ -1,11 +1,11 @@
 import "./App.css";
-import FirstComponent from "./components/FirstComponent";
-
+import AppLayout from "./components/layouts/AppLayout";
 function App() {
   return (
     <div className="App">
-      <FirstComponent />
+     <AppLayout />
     </div>
+    
   );
 }
 
