@@ -1,9 +1,3 @@
-import React from 'react'
-
 export default function Navbar() {
-  return (
-    <div>
-      this is Navbar
-    </div>
-  )
+  return <div className="bg-color-primary">this is Navbar</div>;
 }

@@ -1,20 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --primary: #1b4b66;
-  --primary-tint: #639599;
-  --error: #b00020;
-  --highlight: #ff8c4b;
-  --accent: #f4f4f4;
-  --dark: #13101e;
-  --bright: #ffffff;
-  --grey: #f1f1f1;
-  --light-text: #b6b6b6;
-  --type-high-emphasis: #171520;
-  --type-low-emphasis: #626262;
-}
-/* * {
-  font-family: "Inter", sans-serif;
-} */
