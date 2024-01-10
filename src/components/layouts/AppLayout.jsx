@@ -5,7 +5,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 export default function AppLayout() {
   return (
-    <>
+    <div className="bg-color-accent">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -13,6 +13,6 @@ export default function AppLayout() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </div>
   );
 }
