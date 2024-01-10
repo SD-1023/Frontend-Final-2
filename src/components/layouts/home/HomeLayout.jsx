@@ -4,16 +4,14 @@ import Hero from "./homeComponents/Hero";
 import NewArrivals from "./homeComponents/NewArrivals";
 import ShopByBrands from "./homeComponents/ShopByBrands";
 
-
-
 export default function HomeLayout() {
   return (
-   <>
-   <Hero />
-   <NewArrivals />
-   <Handpicked />
-   <ShopByBrands />
-   <BannerGrid />
-   </>
-  )
+    <>
+      <Hero />
+      <NewArrivals />
+      <Handpicked />
+      <ShopByBrands />
+      <BannerGrid />
+    </>
+  );
 }
