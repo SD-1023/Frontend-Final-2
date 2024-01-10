@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function NewArrivals() {
-  return (
-    <div>
-      NewArrivals
-    </div>
-  )
+  return <div>NewArrivals</div>;
 }
