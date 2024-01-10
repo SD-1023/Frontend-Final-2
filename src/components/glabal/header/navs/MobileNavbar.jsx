@@ -1,18 +1,16 @@
+import Icon from "../../../shared-components/Icon";
+
 export default function MobileNavbar() {
   return (
     <>
       <div className="flex items-center font-semibold text-sm text-color-primary ">
-        <img
-          className="mr-4 hover:cursor-pointer"
-          src="/assets/icons/menu.svg"
-          alt=""
-        />
+        <Icon className="mr-4 hover:cursor-pointer" name={"menu"} />
         Home
       </div>
       <div className="self-end flex items-center">
-        <img src="/assets/icons/add-to-homescreen.svg" alt="" />
-        <img className="px-6" src="/assets/icons/search.svg" alt="" />
-        <img src="/assets/icons/notifications.svg" alt="" />
+        <Icon name={"add-to-homescreen"} />
+        <Icon className="px-6" name={"search"} />
+        <Icon name={"notifications"} />
       </div>
     </>
   );

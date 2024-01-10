@@ -1,11 +1,12 @@
 import { useState } from "react";
+import Icon from "../../../shared-components/Icon";
 
 export default function DesktopNavbar({ categories }) {
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <>
       <div className="flex items-center">
-        <img src="/assets/icons/logo.svg" alt="" />
+        <Icon name={"logo"} />
         <ul className="flex ml-8">
           {categories.map((categorie) => (
             <a
@@ -27,15 +28,14 @@ export default function DesktopNavbar({ categories }) {
               setSearchTerm(e.target.value);
             }}
           />
-          <img
+          <Icon
             className="absolute inset-0 left-[0.5rem] top-[0.62rem]"
-            src="/assets/icons/dark-search.svg"
-            alt=""
+            name={"dark-search"}
           />
         </div>
-        <img className="mr-5" src="/assets/icons/wishlist.svg" alt="" />
-        <img className="mr-5" src="/assets/icons/profile.svg" alt="" />
-        <img src="/assets/icons/bag.svg" alt="" />
+        <Icon className="mr-5" name={"wishlist"} />
+        <Icon className="mr-5" name={"profile"} />
+        <Icon name={"bag"} />
       </div>
     </>
   );
