@@ -7,6 +7,9 @@
   box-sizing: border-box;
 }
 
+.swiper-slide {
+  width: fit-content !important;
+}
 .orange-arrow {
   filter: invert(67%) sepia(18%) saturate(2621%) hue-rotate(338deg)
     brightness(96%) contrast(92%);
