@@ -3,22 +3,24 @@ import Icon from "../../../shared-components/Icon";
 export default function BannerGrid() {
   return (
     <div className="mx-4 my-[1.56rem]">
-      <h3 className="text-sm mb-[0.81rem]">Makeup & Skincare</h3>
-      <div className="relative rounded-lg overflow-hidden ">
+      <h3 className="text-sm font-semibold mb-[0.81rem] md:hidden">
+        Makeup & Skincare
+      </h3>
+      <div className="relative rounded-lg md:rounded-3xl overflow-hidden ">
         <div className="makeup flex h-[8.25rem] md:h-[18rem] lg:h-[25rem]">
           <img
             className="w-[10%] md:h-fill"
-            src="/assets/images/makeup-3.png"
+            src="/assets/images/home-banner-grid/makeup-3.png"
             alt=""
           />
           <img
             className="w-[30%] md:h-fill"
-            src="/assets/images/makeup-2.png"
+            src="/assets/images/home-banner-grid/makeup-2.png"
             alt=""
           />
           <img
             className="w-[60%] md:h-fill"
-            src="/assets/images/makeup.jpg"
+            src="/assets/images/home-banner-grid/makeup.jpg"
             alt=""
           />
         </div>
@@ -34,6 +36,7 @@ export default function BannerGrid() {
           </div>
         </div>
       </div>
+      <div className="flex mt-4"></div>
     </div>
   );
 }

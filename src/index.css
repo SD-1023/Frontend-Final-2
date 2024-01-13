@@ -15,6 +15,6 @@
     brightness(96%) contrast(92%);
 }
 .makeup {
-  background-image: url("/public/assets/images/makeup.jpg"),
-    url("/public/assets/images/makeup-2.png");
+  background-image: url("/public/assets/images/home-banner-grid/makeup.jpg"),
+    url("/public/assets/images/home-banner-grid/makeup-2.png");
 }
