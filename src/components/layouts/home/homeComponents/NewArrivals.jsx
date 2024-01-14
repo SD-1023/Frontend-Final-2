@@ -13,8 +13,8 @@ import Card from '../../../shared-components/Card';
 
 export default function NewArrivals() {
   return (
-    <div className='pl-4 my-6'>
-      <h2 className='pb-3'>New Arrivals</h2>
+    <div className='pl-4 my-6 md:pt-[1.81rem]'>
+      <h1 className='pb-3 md:pb-[1.48rem] font-semibold text-sm md:text-[2.125rem]	'>New Arrivals</h1>
       
       <Swiper
       // modules={[Autoplay]}
