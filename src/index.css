@@ -6,6 +6,15 @@
   font-family: "Inter";
   box-sizing: border-box;
 }
-.swiper-slide{
+
+.swiper-slide {
   width: fit-content !important;
+}
+.orange-arrow {
+  filter: invert(67%) sepia(18%) saturate(2621%) hue-rotate(338deg)
+    brightness(96%) contrast(92%);
+}
+.makeup {
+  background-image: url("/public/assets/images/home-banner-grid/makeup.jpg"),
+    url("/public/assets/images/home-banner-grid/makeup-2.png");
 }
