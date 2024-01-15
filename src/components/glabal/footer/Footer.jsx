@@ -11,9 +11,9 @@ export default function Footer() {
   return (
     <div className=" flex flex-col md:flex-row md:justify-between bg-color-primary w-fill pt-6  md:mr-0 md:px-[3.75rem] pb-7">
       <div className="border-b-2 px-4 pb-7 md:px-0 md:border-0 md:w-3/6 lg:w-5/12 md:flex justify-between border-color-primaryTint ">
-        <div className="">
+        <div>
           <h3 className="text-color-bright mb-[0.44rem] md:mb-[0.75rem]">
-            S hop by Category
+            Shop by Category
           </h3>
           <ul className="text-color-lightText flex flex-col">
             {categories?.map((categorie) => (

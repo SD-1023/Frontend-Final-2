@@ -1,24 +1,23 @@
-import React from 'react'
-import Collection from '../../../shared-components/Collection'
+import React from "react";
+import CollectionCard from "../../../shared-components/Collection";
 
 export default function Handpicked() {
+  const collections = [
+    { image: "personalCare.jpg", title: "Personal Care" },
+    { image: "handbag.jpg", title: "Handbags" },
+    { image: "watch.jpg", title: "Wrist Watches" },
+    { image: "sunglass.jpg", title: "Sunglasses" },
+  ];
   return (
-    <div className='bg-color-primary pb-4  pt-[1.12rem] md:pt-8 '>
-      <h2 className='pb-3 md:pb-[1.44rem] pl-6 text-color-bright font-semibold text-sm md:text-[2.125rem]'>Handpicked Collections</h2>
-      <div className='md:flex md:gap-10 lg:gap-0 '>
-      <div className='flex px-4 lg:px-0 gap-4 md:gap-10 lg:gap-0   pb-4 md:px-0 md:pl-5 md:pr-0 '>
-      <Collection  img={'personalCare.jpg'} collection={"Personal Care"} />
-      <Collection img={'handbag.jpg'} collection={"Handbags"} />
-
-    </div>
-    <div className='flex gap-4 md:gap-10 lg:gap-0   px-4 md:px-0  '>
-      <Collection img={'watch.jpg'} collection={"Wrist Watches"} />
-      <Collection img={'sunglass.jpg'} collection={"Sunglasses"} />
-
-    </div>
+    <div className="bg-color-primary p-4 sm:p-5 md:pt-8">
+      <h2 className="pb-[0.81rem] sm:text-[1.325rem] md:pb-[1.44rem] text-color-bright font-semibold text-sm md:text-[1.725rem] lg:text-[2.125rem] lg:leading-[2.125rem]">
+        Handpicked Collections
+      </h2>
+      <div className="grid grid-rows-2 sm:grid-cols-4 sm:grid-rows-1 gap-4 grid-cols-[repeat(2,minmax(100px,auto))] md:grid-cols-[repeat(auto,minmax(200px,280px))]">
+        {collections.map((collection) => (
+          <CollectionCard image={collection.image} title={collection.title} />
+        ))}
       </div>
-        
     </div>
-  )
+  );
 }
-  
