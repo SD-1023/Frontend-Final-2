@@ -14,6 +14,14 @@
   filter: invert(67%) sepia(18%) saturate(2621%) hue-rotate(338deg)
     brightness(96%) contrast(92%);
 }
+.pink-arrow {
+  filter: invert(67%) sepia(45%) saturate(1055%) hue-rotate(290deg)
+    brightness(85%) contrast(85%);
+}
+.primary-color-arrow {
+  filter: invert(74%) sepia(8%) saturate(3825%) hue-rotate(158deg)
+    brightness(93%) contrast(93%);
+}
 .makeup {
   background-image: url("/public/assets/images/home-banner-grid/makeup.jpg"),
     url("/public/assets/images/home-banner-grid/makeup-2.png");
