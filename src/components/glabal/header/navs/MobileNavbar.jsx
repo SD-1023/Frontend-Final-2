@@ -3,7 +3,7 @@ import Icon from "../../../shared-components/Icon";
 export default function MobileNavbar() {
   return (
     <>
-      <div className="flex items-center font-semibold text-sm text-color-primary ">
+      <div className="flex items-center font-semibold text-sm sm:text-[1.225rem] text-color-primary ">
         <Icon className="mr-4 hover:cursor-pointer" name={"menu"} />
         Home
       </div>
