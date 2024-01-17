@@ -19,7 +19,9 @@ export default function Footer() {
           </h3>
           <ul className="text-color-lightText flex flex-col">
             {categories?.map((categorie) => (
-              <a href={`/${categorie}`}>{categorie}</a>
+              <a key={categorie} href={`/${categorie}`}>
+                {categorie}
+              </a>
             ))}
           </ul>
         </div>

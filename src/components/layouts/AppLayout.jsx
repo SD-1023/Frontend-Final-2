@@ -7,7 +7,7 @@ import FooterContainer from "../glabal/footer/FooterContainter";
 export default function AppLayout() {
   return (
     <div className="bg-color-accent">
-      <BrowserRouter>
+      <BrowserRouter basename="/Frontend-Final-2">
         <Header />
         <Routes>
           <Route index element={<HomeLayout />} />

@@ -6,7 +6,7 @@ import CarryCard from "./hero-cards/CarryCard";
 import SpringCard from "./hero-cards/SpringCard";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-const IMG_PATH = "/assets/images/home-hero/";
+const IMG_PATH = "/Frontend-Final-2/assets/images/home-hero/";
 
 function Hero() {
   return (
