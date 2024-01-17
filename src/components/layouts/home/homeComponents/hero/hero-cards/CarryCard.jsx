@@ -4,7 +4,7 @@ export default function CarryCard({ IMG_PATH }) {
   return (
     <div className="mx-4 my-2 relative">
       <div className="flex h-[7.5rem] sm:h-[13rem] md:h-[19rem] lg:h-[25rem] overflow-hidden rounded-lg sm:rounded-2xl md:rounded-3xl">
-        <img className="w-full" src={`${IMG_PATH}mountain.avif`} alt="" />
+        <img className="w-full" src={`${IMG_PATH}sky.jpg`} alt="" />
       </div>
       <div className="flex flex-col py-1 px-2 sm:p-4 md:px-[1.94rem] md:py-[0rem] lg:px-[2.94rem] lg:py-[1.56rem] absolute right-0 top-[.62rem] sm:top-[1rem] w-7/12 rounded-l-lg sm:rounded-l-2xl md:rounded-l-3xl backdrop-blur-[2.5px] bg-[#dededeb3] h-[6.25rem] sm:h-[10.97rem] md:h-[15.75rem] md:top-[1.63rem] lg:h-[19.75rem] lg:top-[2.63rem]">
         <h1 className="text-2xl mb-[3px] leading-[1.625rem] text-color-primary font-extrabold sm:text-3xl md:text-4xl lg:text-6xl sm:leading-[2.25rem]	md:leading-[5.25rem]">
