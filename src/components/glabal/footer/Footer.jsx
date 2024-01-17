@@ -1,3 +1,5 @@
+import Icon from "../../shared-components/Icon";
+
 export default function Footer() {
   const categories = [
     "Skincare",
@@ -22,16 +24,16 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="px-4">
+      <div className="px-4 pb-12 md:pb-0">
         <div className="pt-4 pb-6 md:flex md:justify-end">
-          <img src="/assets/icons/MediaLogos.svg" alt="" />
+          <Icon name={"MediaLogos"} />
         </div>
-        <div>
-          <div className="flex flex-row md:justify-end text-color-bright pb-2">
-            <img src="/assets/icons/location.svg" alt="" />
+        <div className="">
+          <div className="flex flex-row md:justify-end text-color-bright pb-3">
+            <Icon name={"location"} />
             <p className="pl-2">United States</p>
           </div>
-          <p className="text-color-lightText  md:whitespace-pre">
+          <p className="text-color-lightText pl-1 md:whitespace-pre">
             &copy; 2021 | Cora Leviene All Rights Reserved
           </p>
         </div>
