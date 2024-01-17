@@ -2,7 +2,7 @@ import Icon from "../../../shared-components/Icon";
 
 export default function BannerGrid() {
   return (
-    <div className="mx-4 my-[1.56rem]">
+    <div className="m-4">
       <h3 className="text-sm sm:text-[1.325rem] font-semibold mb-[0.81rem] md:hidden">
         Makeup & Skincare
       </h3>
