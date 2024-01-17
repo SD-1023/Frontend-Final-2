@@ -3,9 +3,9 @@ import Carousel from "react-elastic-carousel";
 
 export default function NewArrivals() {
   let breakPoints = [
-    { width: 640, itemsToShow: 2.3 },
-    { width: 768, itemsToShow: 3.3, pagination: true },
-    { width: 1024, itemsToShow: 4, pagination: true },
+    { width: 640, itemsToShow: 2.3, enableMouseSwipe: true },
+    { width: 768, itemsToShow: 3.3, pagination: true, enableMouseSwipe: false },
+    { width: 1024, itemsToShow: 4, pagination: true, enableMouseSwipe: false },
   ];
 
   return (
@@ -18,7 +18,6 @@ export default function NewArrivals() {
         showArrows={false}
         enableTilt={false}
         itemsToShow={4}
-        enableMouseSwipe={false}
         pagination={false}
         breakPoints={breakPoints}
       >
