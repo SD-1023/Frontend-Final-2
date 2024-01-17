@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Inter";
+  box-sizing: border-box;
+}
+
+.swiper-slide {
+  width: fit-content !important;
+}
+.orange-arrow {
+  filter: invert(67%) sepia(18%) saturate(2621%) hue-rotate(338deg)
+    brightness(96%) contrast(92%);
+}
+.pink-arrow {
+  filter: invert(67%) sepia(45%) saturate(1055%) hue-rotate(290deg)
+    brightness(85%) contrast(85%);
+}
+.primary-color-arrow {
+  filter: invert(74%) sepia(8%) saturate(3825%) hue-rotate(158deg)
+    brightness(93%) contrast(93%);
+}
+.makeup {
+  background-image: url("/public/assets/images/home-banner-grid/makeup.jpg"),
+    url("/public/assets/images/home-banner-grid/makeup-2.png");
+}
+.grey-linear-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 0%,
+    rgba(3, 24, 26, 0.431) 100%
+  );
+}
+
+.css-eb1v2s-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+  min-height: 30px !important;
+  max-height: 48px;
+}
+.rec .rec-pagination button[tabindex="0"] {
+  background-color: transparent;
+}
+.rec .rec-pagination button[tabindex="0"]:hover {
+  box-shadow: 0 0 1px 3px #1b4b66a1;
+}
+
+.rec .rec-pagination button[tabindex="-1"] {
+  background-color: #1b4b66b7;
+  box-shadow: 0 0 1px 3px #1b4b66a1;
+}

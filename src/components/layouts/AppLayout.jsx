@@ -1,20 +1,20 @@
-import React from 'react'
-import HomeLayout from './home/HomeLayout'
-import Navbar from '../glabal/navbar/Navbar'
-import Footer from '../glabal/footer/Footer'
-import { Route,BrowserRouter,Routes } from "react-router-dom";
+import HomeLayout from "./home/HomeLayout";
+import Header from "../glabal/header/Header";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import BottomNavigation from "../glabal/bottom-nav/BottomNavigation";
+import FooterContainer from "../glabal/footer/FooterContainter";
 
 export default function AppLayout() {
   return (
-    <>
-     <BrowserRouter>
-     <Navbar />
-      <Routes>
-        <Route index element={<HomeLayout />}/>
-      </Routes>
-      <Footer />
+    <div className="bg-color-accent">
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route index element={<HomeLayout />} />
+        </Routes>
+        <FooterContainer />
+        <BottomNavigation />
       </BrowserRouter>
-
-    </>
-  )
+    </div>
+  );
 }
