@@ -1,8 +1,8 @@
 import HomeLayout from "./home/HomeLayout";
 import Header from "../glabal/header/Header";
-import Footer from "../glabal/footer/Footer";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import BottomNavigation from "../glabal/bottom-nav/BottomNavigation";
+import FooterContainer from "../glabal/footer/FooterContainter";
 
 export default function AppLayout() {
   return (
@@ -12,7 +12,7 @@ export default function AppLayout() {
         <Routes>
           <Route index element={<HomeLayout />} />
         </Routes>
-        <Footer />
+        <FooterContainer />
         <BottomNavigation />
       </BrowserRouter>
     </div>
