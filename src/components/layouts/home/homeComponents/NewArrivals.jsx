@@ -20,6 +20,7 @@ export default function NewArrivals() {
         itemsToShow={4}
         pagination={false}
         breakPoints={breakPoints}
+        showEmptySlots={false}
       >
         <Card
           className={"mr-4"}
