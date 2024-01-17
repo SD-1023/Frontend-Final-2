@@ -34,7 +34,20 @@
   );
 }
 
+
 .css-eb1v2s-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
   min-height: 30px !important;
   max-height: 48px;
+
+.rec .rec-pagination button[tabindex="0"] {
+  background-color: transparent;
+}
+.rec .rec-pagination button[tabindex="0"]:hover {
+  box-shadow: 0 0 1px 3px #1b4b66a1;
+}
+
+.rec .rec-pagination button[tabindex="-1"] {
+  background-color: #1b4b66b7;
+  box-shadow: 0 0 1px 3px #1b4b66a1;
+
 }
