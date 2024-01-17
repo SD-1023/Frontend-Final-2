@@ -11,6 +11,7 @@ export default function AppLayout() {
         <Header />
         <Routes>
           <Route index element={<HomeLayout />} />
+          <Route index element={<HomeLayout />} />
         </Routes>
         <FooterContainer />
         <BottomNavigation />

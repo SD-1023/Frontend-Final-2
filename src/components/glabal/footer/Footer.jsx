@@ -26,7 +26,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="px-4 pb-12 md:pb-0">
+      <div className="px-4 pb-12 sm:pb-0">
         <div className="pt-4 pb-6 md:flex md:justify-end">
           <Icon name={"MediaLogos"} />
         </div>
