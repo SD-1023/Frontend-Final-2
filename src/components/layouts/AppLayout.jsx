@@ -3,6 +3,7 @@ import Header from "../glabal/header/Header";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import BottomNavigation from "../glabal/bottom-nav/BottomNavigation";
 import FooterContainer from "../glabal/footer/FooterContainter";
+import CategoryLayout from "./category/CategoryLayout";
 
 export default function AppLayout() {
   return (
@@ -11,7 +12,7 @@ export default function AppLayout() {
         <Header />
         <Routes>
           <Route index element={<HomeLayout />} />
-          <Route index element={<HomeLayout />} />
+          <Route path="/category/:id" element={<CategoryLayout />} />
         </Routes>
         <FooterContainer />
         <BottomNavigation />

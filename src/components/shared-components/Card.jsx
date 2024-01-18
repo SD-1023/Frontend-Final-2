@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 export default function Card({ brand, color, price, img, className }) {
   const IMG_PATH = "/Frontend-Final-2/assets/images/";
 
@@ -8,11 +10,7 @@ export default function Card({ brand, color, price, img, className }) {
         <h4 className="text-xs font-semibold text-color-typeHighEmphasis">
           {brand}
         </h4>
-        <img
-          className="absolute right-0 bottom-10 "
-          src="/assets/icons/heart.svg"
-          alt=""
-        />
+        <Icon className="absolute right-0 bottom-10 " name="heart" />
         <p className="text-xs text-color-typeLowEmphasis">{color}</p>
         <span className="text-sm font-semibold text-color-typeHighEmphasis">
           {price}
