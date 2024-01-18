@@ -7,7 +7,7 @@ import CategoryLayout from "./category/CategoryLayout";
 
 export default function AppLayout() {
   return (
-    <div className="bg-color-accent">
+    <div className="bg-color-bright">
       <BrowserRouter basename="/Frontend-Final-2">
         <Header />
         <Routes>
