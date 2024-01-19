@@ -14,6 +14,7 @@ export default function DesktopNavbar({ categories }) {
         <ul className="flex ml-8">
           {categories.map((categorie) => (
             <a
+              key={categorie}
               href="/"
               className="mr-5 text-sm font-medium text-color-typeHighEmphasis"
             >

@@ -1,3 +1,5 @@
 export default function Brands({ img }) {
-  return <img className="w-full" src={`/assets/images/${img}`} alt="" />;
+  const IMG_PATH = "/Frontend-Final-2/assets/images/";
+
+  return <img className="w-full" src={`${IMG_PATH}${img}`} alt="" />;
 }

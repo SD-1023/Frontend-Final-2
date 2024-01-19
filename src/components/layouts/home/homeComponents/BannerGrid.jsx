@@ -1,6 +1,8 @@
 import Icon from "../../../shared-components/Icon";
 
 export default function BannerGrid() {
+  const IMG_PATH = "/Frontend-Final-2/assets/images/home-banner-grid/";
+
   return (
     <div className="m-4">
       <h3 className="text-sm sm:text-[1.325rem] font-semibold mb-[0.81rem] md:hidden">
@@ -10,17 +12,17 @@ export default function BannerGrid() {
         <div className="makeup flex h-[8.25rem] sm:h-[12rem] md:h-[18rem] lg:h-[25rem]">
           <img
             className="w-[10%] md:h-fill"
-            src="/assets/images/home-banner-grid/makeup-3.png"
+            src={`${IMG_PATH}makeup-3.png`}
             alt=""
           />
           <img
             className="w-[30%] md:h-fill"
-            src="/assets/images/home-banner-grid/makeup-2.png"
+            src={`${IMG_PATH}makeup-2.png`}
             alt=""
           />
           <img
             className="w-[60%] md:h-fill"
-            src="/assets/images/home-banner-grid/makeup.jpg"
+            src={`${IMG_PATH}makeup.png`}
             alt=""
           />
         </div>
@@ -40,7 +42,7 @@ export default function BannerGrid() {
         <div className="relative rounded-lg md:rounded-3xl overflow-hidden">
           <img
             className="h-full w-full"
-            src="/assets/images/home-banner-grid/skincare.png"
+            src={`${IMG_PATH}skincare.png`}
             alt=""
           />
           <div className="absolute flex flex-col justify-between h-full right-0 top-0 p-2 sm:p-4 lg:pr-10 lg:pt-7">
@@ -55,7 +57,7 @@ export default function BannerGrid() {
         <div className="relative rounded-lg md:rounded-3xl overflow-hidden">
           <img
             className="h-full w-full"
-            src="/assets/images/home-banner-grid/facepacks.png"
+            src={`${IMG_PATH}facepacks.png`}
             alt=""
           />
           <div className="absolute flex flex-col justify-between h-full right-0 top-0 p-2 sm:p-4 lg:pr-10 lg:pt-7">

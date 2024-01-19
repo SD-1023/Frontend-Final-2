@@ -9,8 +9,8 @@ export default function ShopByBrands() {
         Shop By Brands
       </h2>
       <div className="grid grid-cols-[repeat(3,minmax(100px,300px))] grid-row-2 gap-x-4 gap-y-6 md:grid-cols-6 ">
-        {data.map(() => (
-          <Brands img={"prada.png"} />
+        {data.map((brand, index) => (
+          <Brands key={index} img={"prada.png"} />
         ))}
       </div>
     </div>

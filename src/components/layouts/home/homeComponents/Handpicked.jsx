@@ -13,9 +13,13 @@ export default function Handpicked() {
       <h2 className="pb-[0.81rem] sm:text-[1.325rem] md:pb-[1.44rem] text-color-bright font-semibold text-sm md:text-[1.725rem] lg:text-[2.125rem] lg:leading-[2.125rem]">
         Handpicked Collections
       </h2>
-      <div className="grid grid-rows-2 sm:grid-cols-4 sm:grid-rows-1 gap-4 grid-cols-[repeat(2,minmax(100px,auto))] md:grid-cols-[repeat(auto,minmax(200px,280px))]">
+      <div className="grid grid-rows-2 sm:grid-cols-4 sm:grid-rows-1 gap-4 lg:gap-8 grid-cols-[repeat(2,minmax(100px,auto))] md:grid-cols-[repeat(auto,minmax(200px,280px))]">
         {collections.map((collection) => (
-          <CollectionCard image={collection.image} title={collection.title} />
+          <CollectionCard
+            key={collection.title}
+            image={collection.image}
+            title={collection.title}
+          />
         ))}
       </div>
     </div>
