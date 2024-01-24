@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import Icon from "./Icon";
 
 export default function Card({
+  id,
   name,
   color,
   price,
   oldPrice,
   salePersent,
   img,
-  id,
   className,
   section,
 }) {

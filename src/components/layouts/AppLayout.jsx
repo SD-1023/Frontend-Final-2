@@ -6,6 +6,7 @@ import FooterContainer from "../glabal/footer/FooterContainter";
 import CategoryLayout from "./category/CategoryLayout";
 import CategoriesContext from "../contexts/CategoriesContext";
 import ProductsGrid from "../shared-components/ProductsGrid";
+import ProductLayout from "./product/ProductLayout";
 
 export default function AppLayout() {
   return (
@@ -17,6 +18,7 @@ export default function AppLayout() {
             <Route index element={<HomeLayout />} />
             <Route path="/category/:id" element={<CategoryLayout />} />
             <Route path="/search/:term" element={<ProductsGrid />} />
+            <Route path="/product/:id" element={<ProductLayout />} />
           </Routes>
           <FooterContainer />
           <BottomNavigation />
