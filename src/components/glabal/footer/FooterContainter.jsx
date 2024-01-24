@@ -3,8 +3,11 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Footer from "./Footer";
+import { useCategoriesContext } from "../../contexts/CategoriesContext";
 
 export default function FooterContainer() {
+  const { categories } = useCategoriesContext();
+
   return (
     <>
       <div className="sm:hidden pb-14">
@@ -23,12 +26,12 @@ export default function FooterContainer() {
             </span>
           </AccordionSummary>
           <AccordionDetails sx={{ padding: 0, marginTop: 0 }}>
-            <Footer />
+            <Footer categories={categories} />
           </AccordionDetails>
         </Accordion>
       </div>
       <div className="hidden sm:block">
-        <Footer />
+        <Footer categories={categories} />
       </div>
     </>
   );

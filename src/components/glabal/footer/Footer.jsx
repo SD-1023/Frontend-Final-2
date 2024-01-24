@@ -1,15 +1,7 @@
+import { Link } from "react-router-dom";
 import Icon from "../../shared-components/Icon";
 
-export default function Footer() {
-  const categories = [
-    "Skincare",
-    "Prsonal Care",
-    "Handbags",
-    "Apparels",
-    "Watches",
-    "Eye Wear",
-    "Jewellery",
-  ];
+export default function Footer({ categories }) {
   return (
     <div className=" flex flex-col md:flex-row md:justify-between bg-color-primary w-fill pt-6  md:mr-0 md:px-[3.75rem] pb-7">
       <div className="text-sm md:text-base border-b-2 px-4 pb-7 md:px-0 md:border-0 md:w-3/6 lg:w-5/12 md:flex justify-between border-color-primaryTint ">
@@ -18,11 +10,16 @@ export default function Footer() {
             Shop by Category
           </h3>
           <ul className="text-color-lightText flex flex-col">
-            {categories?.map((categorie) => (
-              <a key={categorie} href={`/${categorie}`}>
-                {categorie}
-              </a>
-            ))}
+            {categories &&
+              categories.map((categorie) => (
+                <Link
+                  className="w-fit"
+                  key={categorie.id}
+                  to={`/category/${categorie.id}`}
+                >
+                  {categorie.name}
+                </Link>
+              ))}
           </ul>
         </div>
       </div>
@@ -30,7 +27,7 @@ export default function Footer() {
         <div className="pt-4 pb-6 md:flex md:justify-end">
           <Icon name={"MediaLogos"} />
         </div>
-        <div className="">
+        <div>
           <div className="flex flex-row md:justify-end text-color-bright pb-3">
             <Icon name={"location"} />
             <p className="pl-2">United States</p>
