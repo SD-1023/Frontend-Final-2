@@ -8,8 +8,8 @@ export default function ProductsGrid({ title = null, products }) {
 
   if (!products) {
     products = location.state?.products;
-    console.log("myProducts", products);
   }
+
   return (
     <div className="p-4">
       {/* <Breadcrumbs
