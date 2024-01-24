@@ -1,9 +1,18 @@
+import useApi from "../../../hooks/useApi";
 import Card from "../../../shared-components/Card";
 import Carousel from "react-elastic-carousel";
-
+import { useEffect, useState } from "react";
 export default function NewArrivals() {
+  const [products, setProducts] = useState([]);
+  const { get, data } = useApi();
+
+  useEffect(() => {
+    get("/products/newestProducts");
+    setProducts(data?.data?.latestProducts);
+  }, [data, get]);
+
   let breakPoints = [
-    { width: 640, itemsToShow: 2.3, enableMouseSwipe: true },
+    { width: 640, itemsToShow: 2.1, enableMouseSwipe: true },
     { width: 768, itemsToShow: 3.3, pagination: true, enableMouseSwipe: false },
     { width: 1024, itemsToShow: 4, pagination: true, enableMouseSwipe: false },
   ];
@@ -14,50 +23,29 @@ export default function NewArrivals() {
         New Arrivals
       </h1>
 
-      <Carousel
-        showArrows={false}
-        enableTilt={false}
-        itemsToShow={4}
-        pagination={false}
-        breakPoints={breakPoints}
-        showEmptySlots={false}
-      >
-        <Card
-          className={"mr-4"}
-          img={"bag1.png"}
-          brand={"Grande"}
-          color={"Blossom Pouch"}
-          price={"$39.49"}
-        />
-        <Card
-          className={"mr-4"}
-          img={"bag1.png"}
-          brand={"Grande"}
-          color={"Blossom Pouch"}
-          price={"$39.49"}
-        />
-        <Card
-          className={"mr-4"}
-          img={"bag1.png"}
-          brand={"Grande"}
-          color={"Blossom Pouch"}
-          price={"$39.49"}
-        />
-        <Card
-          className={"mr-4"}
-          img={"bag1.png"}
-          brand={"Grande"}
-          color={"Blossom Pouch"}
-          price={"$39.49"}
-        />
-        <Card
-          className={"mr-4"}
-          img={"bag1.png"}
-          brand={"Grande"}
-          color={"Blossom Pouch"}
-          price={"$39.49"}
-        />
-      </Carousel>
+      {products && (
+        <Carousel
+          showArrows={false}
+          enableTilt={false}
+          itemsToShow={4}
+          pagination={false}
+          breakPoints={breakPoints}
+        >
+          {products.map((product) => (
+            <Card key={product.id}
+              id={product.id}
+              className={"min-w-[150px] mr-3"}
+              img={product.image_secure_url}
+              name={product.name}
+              color={product.category}
+              price={product.finalPrice}
+              oldPrice={product.price}
+              salePersent={product.offer}
+              section={"newArrivals"}
+            />
+          ))}
+        </Carousel>
+      )}
     </div>
   );
 }

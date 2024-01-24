@@ -11,7 +11,7 @@ const IMG_PATH = "/Frontend-Final-2/assets/images/home-hero/";
 function Hero() {
   return (
     <Box sx={{ width: "100%" }}>
-      <AutoPlaySwipeableViews interval={2500} enableMouseEvents>
+      <AutoPlaySwipeableViews interval={3500} enableMouseEvents>
         <CarryCard IMG_PATH={IMG_PATH} />
         <SpringCard IMG_PATH={IMG_PATH} />
       </AutoPlaySwipeableViews>

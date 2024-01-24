@@ -4,18 +4,25 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import BottomNavigation from "../glabal/bottom-nav/BottomNavigation";
 import FooterContainer from "../glabal/footer/FooterContainter";
 import CategoryLayout from "./category/CategoryLayout";
+import CategoriesContext from "../contexts/CategoriesContext";
+import ProductsGrid from "../shared-components/ProductsGrid";
+import ProductLayout from "./product/ProductLayout";
 
 export default function AppLayout() {
   return (
-    <div className="bg-color-bright">
+    <div className="bg-color-bright min-h-[100vh]">
       <BrowserRouter basename="/Frontend-Final-2">
-        <Header />
-        <Routes>
-          <Route index element={<HomeLayout />} />
-          <Route path="/category/:id" element={<CategoryLayout />} />
-        </Routes>
-        <FooterContainer />
-        <BottomNavigation />
+        <CategoriesContext>
+          <Header />
+          <Routes>
+            <Route index element={<HomeLayout />} />
+            <Route path="/category/:id" element={<CategoryLayout />} />
+            <Route path="/search/:term" element={<ProductsGrid />} />
+            <Route path="/product/:id" element={<ProductLayout />} />
+          </Routes>
+          <FooterContainer />
+          <BottomNavigation />
+        </CategoriesContext>
       </BrowserRouter>
     </div>
   );
