@@ -1,11 +1,8 @@
 import Icon from "../../../shared-components/Icon";
 import { Link } from "react-router-dom";
+import SearchContainer from "./searchBar/SearchContainer";
 
-export default function DesktopNavbar({
-  categories,
-  handleChange,
-  searchTerm,
-}) {
+export default function DesktopNavbar({ categories }) {
   return (
     <>
       <div className="flex items-center">
@@ -25,21 +22,10 @@ export default function DesktopNavbar({
             ))}
         </ul>
       </div>
+
       <div className="flex items-center">
         <div className="mr-6 relative">
-          <input
-            className="bg-color-grey text-sm font-medium rounded w-80 h-[2.75rem] border-0 outline-none pl-10"
-            placeholder="Search for products or brands....."
-            value={searchTerm}
-            onChange={handleChange}
-            onSubmit={() => {
-              console.log("submitted");
-            }}
-          />
-          <Icon
-            className="absolute inset-0 left-[0.5rem] top-[0.62rem]"
-            name={"dark-search"}
-          />
+          <SearchContainer />
         </div>
         <Icon className="mr-5" name={"wishlist"} />
         <Icon className="mr-5" name={"profile"} />

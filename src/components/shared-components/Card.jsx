@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Icon from "./Icon";
 
 export default function Card({
@@ -7,19 +8,28 @@ export default function Card({
   oldPrice,
   salePersent,
   img,
+  id,
   className,
+  section,
 }) {
-  const IMG_PATH = "/Frontend-Final-2/assets/images/";
-
   return (
-    <div className={`relative ${className} `}>
-      <img className="rounded-lg" alt="" src={`${IMG_PATH}${img}`} />
-      <div className="pt-2">
+    <Link
+      to={`/product/${id}`}
+      className={`relative ${className} flex justify-between flex-col shadow-2xl rounded-lg overflow-hidden`}
+    >
+      <img
+        className={`rounded-lg w-[100%] max-w-[12rem] sm:max-w-[unset] h-[7rem] ${
+          section === "newArrivals" ? "max-h-[11.2rem]" : "sm:h-[15.2rem]"
+        }  md:h-[20.2rem] md:w-[20.2rem] lg:h-[15.2rem]`}
+        alt=""
+        src={`${img}`}
+      />
+      <div className="p-3 pt-4">
         <h4 className="text-xs md:text-base font-semibold md:font-medium md:leading-5 text-color-typeHighEmphasis">
           {name}
         </h4>
         <Icon
-          className="absolute right-0 bottom-8 md:bottom-[2.8rem] w-5 md:w-6"
+          className="absolute right-0 bottom-8 md:bottom-[2.8rem] w-5 mr-3 md:w-6"
           name="heart"
         />
         <p className="text-xs md:text-sm leading-4 md:leading-5 text-color-typeLowEmphasis">
@@ -41,6 +51,6 @@ export default function Card({
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

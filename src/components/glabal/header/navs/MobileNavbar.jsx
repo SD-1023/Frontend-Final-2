@@ -1,4 +1,5 @@
 import Icon from "../../../shared-components/Icon";
+import SearchContainer from "./searchBar/SearchContainer";
 
 export default function MobileNavbar() {
   return (
@@ -8,8 +9,7 @@ export default function MobileNavbar() {
         Home
       </div>
       <div className="self-end flex items-center">
-        <Icon name={"add-to-homescreen"} />
-        <Icon className="px-6" name={"search"} />
+        <SearchContainer />
         <Icon name={"notifications"} />
       </div>
     </>

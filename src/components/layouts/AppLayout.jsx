@@ -6,28 +6,13 @@ import FooterContainer from "../glabal/footer/FooterContainter";
 import CategoryLayout from "./category/CategoryLayout";
 import CategoriesContext from "../contexts/CategoriesContext";
 import ProductsGrid from "../shared-components/ProductsGrid";
-import useDebounce from "../hooks/useDebounce";
-import useApi from "../hooks/useApi";
-import { useState } from "react";
 
 export default function AppLayout() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const { data, get } = useApi();
-  const handleSearch = useDebounce((term) => {
-    get(`/products?search=${term}`);
-    console.log(data);
-  }, 500);
-
-  const handleChange = (event) => {
-    const { value } = event.target;
-    setSearchTerm(value);
-    handleSearch(value);
-  };
   return (
-    <div className="bg-color-bright">
+    <div className="bg-color-bright min-h-[100vh]">
       <BrowserRouter basename="/Frontend-Final-2">
         <CategoriesContext>
-          <Header handleChange={handleChange} searchTerm={searchTerm} />
+          <Header />
           <Routes>
             <Route index element={<HomeLayout />} />
             <Route path="/category/:id" element={<CategoryLayout />} />

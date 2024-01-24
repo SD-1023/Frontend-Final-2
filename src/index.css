@@ -46,6 +46,7 @@
 }
 
 .rec .rec-pagination button[tabindex="-1"] {
+  background-color: #c6c6c8;
   background-color: #1b4b66b7;
   box-shadow: 0 0 1px 3px #1b4b66a1;
 }
@@ -55,4 +56,12 @@
 
 .rec .rec-item-wrapper {
   justify-content: unset;
+  width: fit-content !important;
+}
+.rec .rec-swipable {
+  justify-content: space-between;
+  width: 100%;
+}
+.rec .rec-slider {
+  width: 100%;
 }

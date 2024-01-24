@@ -9,7 +9,6 @@ export default function NewArrivals() {
   useEffect(() => {
     get("/products/newestProducts");
     setProducts(data?.data?.latestProducts);
-    console.log(data?.data?.latestProducts);
   }, [data, get]);
 
   let breakPoints = [
@@ -35,12 +34,13 @@ export default function NewArrivals() {
           {products.map((product) => (
             <Card
               className={"min-w-[150px] mr-3"}
-              img={"bag1.png"}
+              img={product.image_secure_url}
               name={product.name}
               color={product.category}
               price={product.finalPrice}
               oldPrice={product.price}
               salePersent={product.offer}
+              section={"newArrivals"}
             />
           ))}
         </Carousel>

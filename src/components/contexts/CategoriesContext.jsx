@@ -9,7 +9,6 @@ export default function CategoriesContext({ children }) {
   useEffect(() => {
     get("/categories");
     setCategories(data.categories);
-    console.log(data.categories);
   }, [data, get]);
 
   return (
