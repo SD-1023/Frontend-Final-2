@@ -33,7 +33,8 @@ export default function NewArrivals() {
           breakPoints={breakPoints}
         >
           {products.map((product) => (
-            <Card
+            <Card key={product.id}
+              id={product.id}
               className={"min-w-[150px] mr-3"}
               img={"bag1.png"}
               name={product.name}

@@ -9,6 +9,7 @@ import ProductsGrid from "../shared-components/ProductsGrid";
 import useDebounce from "../hooks/useDebounce";
 import useApi from "../hooks/useApi";
 import { useState } from "react";
+import ProductLayout from "./product/ProductLayout";
 
 export default function AppLayout() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,16 +27,19 @@ export default function AppLayout() {
   return (
     <div className="bg-color-bright">
       <BrowserRouter basename="/Frontend-Final-2">
+   
         <CategoriesContext>
           <Header handleChange={handleChange} searchTerm={searchTerm} />
           <Routes>
             <Route index element={<HomeLayout />} />
             <Route path="/category/:id" element={<CategoryLayout />} />
             <Route path="/search/:term" element={<ProductsGrid />} />
+            <Route path="/product/:id" element={<ProductLayout />} />
           </Routes>
           <FooterContainer />
           <BottomNavigation />
         </CategoriesContext>
+       
       </BrowserRouter>
     </div>
   );
