@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import Icon from "./Icon";
 
 export default function Card({
+  id,
   name,
   color,
   price,
@@ -12,7 +14,7 @@ export default function Card({
   const IMG_PATH = "/Frontend-Final-2/assets/images/";
 
   return (
-    <div className={`relative ${className} `}>
+    <Link to={`/product/${id}`} className={`relative ${className} `}>
       <img className="rounded-lg" alt="" src={`${IMG_PATH}${img}`} />
       <div className="pt-2">
         <h4 className="text-xs md:text-base font-semibold md:font-medium md:leading-5 text-color-typeHighEmphasis">
@@ -41,6 +43,6 @@ export default function Card({
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
