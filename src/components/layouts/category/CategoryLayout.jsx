@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import Hero from "./category-components/Hero";
-import ProductsGrid from "../../shared-components/ProductsGrid";
+import ProductsGrid from "../../shared-components/productsGrid/ProductsGrid";
 import useApi from "../../hooks/useApi";
 import { useEffect, useState } from "react";
 export default function CategoryLayout() {

@@ -14,7 +14,7 @@ export default function TopCategories() {
       <Carousel
         showArrows={false}
         enableTilt={false}
-        itemsToShow={3.5}
+        itemsToShow={4.6}
         pagination={false}
         showEmptySlots={false}
         enableMouseSwipe={true}

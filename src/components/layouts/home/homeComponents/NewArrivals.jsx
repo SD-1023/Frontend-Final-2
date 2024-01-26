@@ -12,7 +12,8 @@ export default function NewArrivals() {
   }, [data, get]);
 
   let breakPoints = [
-    { width: 640, itemsToShow: 2.1, enableMouseSwipe: true },
+    { width: 460, itemsToShow: 2.3, enableMouseSwipe: true },
+    { width: 640, itemsToShow: 2.9, enableMouseSwipe: true },
     { width: 768, itemsToShow: 3.3, pagination: true, enableMouseSwipe: false },
     { width: 1024, itemsToShow: 4, pagination: true, enableMouseSwipe: false },
   ];
@@ -32,17 +33,7 @@ export default function NewArrivals() {
           breakPoints={breakPoints}
         >
           {products.map((product) => (
-            <Card key={product.id}
-              id={product.id}
-              className={"min-w-[150px] mr-3"}
-              img={product.image_secure_url}
-              name={product.name}
-              color={product.category}
-              price={product.finalPrice}
-              oldPrice={product.price}
-              salePersent={product.offer}
-              section={"newArrivals"}
-            />
+            <Card key={product.id} product={product} />
           ))}
         </Carousel>
       )}

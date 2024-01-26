@@ -53,15 +53,6 @@
 .rec .rec-slider-container {
   margin: 0px;
 }
-
 .rec .rec-item-wrapper {
   justify-content: unset;
-  width: fit-content !important;
-}
-.rec .rec-swipable {
-  justify-content: space-between;
-  width: 100%;
-}
-.rec .rec-slider {
-  width: 100%;
 }
