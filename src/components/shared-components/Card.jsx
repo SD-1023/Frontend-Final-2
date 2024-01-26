@@ -5,10 +5,10 @@ export default function Card({ product }) {
   return (
     <Link
       to={`/product/${product.id}`}
-      className={`relative w-[8.5rem] mr-4 rounded-lg overflow-hidden`}
+      className={`relative w-full mr-4 sm:mr-6 md:mr-7 lg:mr-8 rounded-lg overflow-hidden`}
     >
       <img
-        className={`rounded-lg w-[100%] h-[8.5rem]`}
+        className={`rounded-lg w-[100%] max-h-[9rem] md:max-h-[13rem]`}
         alt=""
         src={`${product.image_secure_url}`}
       />

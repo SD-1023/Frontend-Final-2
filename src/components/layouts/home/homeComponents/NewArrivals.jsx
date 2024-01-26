@@ -12,7 +12,8 @@ export default function NewArrivals() {
   }, [data, get]);
 
   let breakPoints = [
-    { width: 640, itemsToShow: 2.3, enableMouseSwipe: true },
+    { width: 460, itemsToShow: 2.3, enableMouseSwipe: true },
+    { width: 640, itemsToShow: 2.9, enableMouseSwipe: true },
     { width: 768, itemsToShow: 3.3, pagination: true, enableMouseSwipe: false },
     { width: 1024, itemsToShow: 4, pagination: true, enableMouseSwipe: false },
   ];
