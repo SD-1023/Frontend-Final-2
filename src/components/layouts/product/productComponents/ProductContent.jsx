@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Icon from "../../shared-components/Icon";
+import Icon from "../../../shared-components/Icon";
 
 export default function ProductContent({ info }) {
   const [quantity, setQuantity] = useState(0);
@@ -21,14 +21,18 @@ export default function ProductContent({ info }) {
           {info.name}
         </h2>
         <p className="text-sm text-color-typeLowEmphasis">{info.category}</p>
-        <div className=" pt-[0.62rem] pb-4">
+        <div className="pt-[0.62rem] pb-4 flex">
           <span className="pr-3 font-semibold text-color-typeHighEmphasis text-xl">
             ${info.price}
           </span>
-          <del className="pr-2 text-color-typeLowEmphasis text-sm">
-            ${info.finalPrice}
-          </del>
-          <span className="text-color-error text-sm">{info.offer}%OFF</span>
+          {info.price !== info.finalPrice && (
+            <>
+              <del className="pr-2 text-color-typeLowEmphasis text-sm">
+                ${info.finalPrice}
+              </del>
+              <span className="text-color-error text-sm">{info.offer}%OFF</span>
+            </>
+          )}
         </div>
         <div className="md:flex items-center hidden leading-[2.62rem]">
           <h3 className="pr-4 font-semibold text-xl leading-6">Quantity: </h3>
@@ -56,7 +60,7 @@ export default function ProductContent({ info }) {
         </div>
 
         <div className="flex flex-row md:hidden">
-          <div className="bg-color-accent px-[0.8rem] rounded flex items-center">
+          <div className="bg-color-accent px-[0.8rem] rounded flex items-center font-semibold">
             {info.averageRating || "4.6"}
             <Icon name={"star"} className={"w-5 ml-1"} />
           </div>
@@ -73,8 +77,10 @@ export default function ProductContent({ info }) {
             Add To Bag
           </button>
           <button className="rounded-lg hidden md:flex items-center justify-center border border-color-primary w-5/12">
-            <Icon className="mr-2" name={"wishlist"} />
-            Add To WishList
+            <Icon className="mr-2 w-6" name={"wishlist"} />
+            <span className="leading-6 font-semibold text-color-primary">
+              Add To WishList
+            </span>
           </button>
         </div>
       </div>
