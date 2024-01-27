@@ -27,6 +27,10 @@ export default function ProductLayout() {
       page: productData?.category,
       path: `/category/${productData?.Category__Id}`,
     },
+    {
+      page: productData?.name,
+      path: "#",
+    },
   ];
   return (
     <div className="p-4">

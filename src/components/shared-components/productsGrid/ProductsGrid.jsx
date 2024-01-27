@@ -1,8 +1,6 @@
-import Card from "../Card";
-// import Breadcrumbs from "@mui/material/Breadcrumbs";
-// import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { useLocation } from "react-router";
 import ProductCard from "./ProductCard";
+import MyBreadcrumbs from "../MyBreadcrumbs";
 
 export default function ProductsGrid({ title = null, products }) {
   let location = useLocation();
@@ -13,12 +11,7 @@ export default function ProductsGrid({ title = null, products }) {
 
   return (
     <div className="p-4">
-      {/* <Breadcrumbs
-        separator={<NavigateNextIcon fontSize="small" />}
-        aria-label="breadcrumb"
-      >
-        {}
-      </Breadcrumbs> */}
+      {/* <MyBreadcrumbs /> */}
       {title && (
         <h1 className="mb-3 text-xl sm:text-2xl md:text-3xl lg:text-[2.125rem] font-semibold leading-[1.625rem] sm:leading-8 md:leading-10 lg:leading-[3rem] text-color-primary">
           {title}
