@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage() {
   // http://161.156.81.77:4000/users
+  // http://161.156.81.77:4000/users/signin
   const { post, data } = useApi();
   const navigate = useNavigate();
   const formik = useFormik({
@@ -30,7 +31,6 @@ export default function SignUpPage() {
     },
   });
   useEffect(()=>{
-    console.log(data);
    if(data?.newUser?.id){
      navigate('/signin');
    }
