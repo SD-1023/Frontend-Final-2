@@ -12,7 +12,7 @@ import SignInPage from "./users/SignInPage";
 export default function AppLayout() {
   return (
     <div className="bg-color-bright min-h-[100vh]">
-      <BrowserRouter basename="/Frontend-Final-2">
+      <BrowserRouter>
         <CategoriesContext>
           <Header />
           <Routes>
