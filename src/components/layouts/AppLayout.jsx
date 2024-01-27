@@ -8,6 +8,7 @@ import CategoriesContext from "../contexts/CategoriesContext";
 import ProductsGrid from "../shared-components/productsGrid/ProductsGrid";
 import ProductLayout from "./product/ProductLayout";
 import SignUpPage from "./users/SignUpPage";
+import SignInPage from "./users/SignInPage";
 export default function AppLayout() {
   return (
     <div className="bg-color-bright min-h-[100vh]">
@@ -20,6 +21,7 @@ export default function AppLayout() {
             <Route path="/search/:term" element={<ProductsGrid />} />
             <Route path="/product/:id" element={<ProductLayout />} />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/signin" element={<SignInPage />} />
           </Routes>
           <FooterContainer />
           <BottomNavigation />
