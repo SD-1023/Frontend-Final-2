@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
 * {
   font-family: "Inter";
@@ -21,6 +22,9 @@
 .primary-color-arrow {
   filter: invert(74%) sepia(8%) saturate(3825%) hue-rotate(158deg)
     brightness(93%) contrast(93%);
+}
+.whiteSvg {
+  filter: brightness(0) invert(1);
 }
 .makeup {
   background-image: url("/public/assets/images/home-banner-grid/makeup.jpg"),
@@ -55,4 +59,28 @@
 }
 .rec .rec-item-wrapper {
   justify-content: unset;
+}
+
+.image-gallery-slide-wrapper {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.image-gallery-thumbnail {
+  width: 73px;
+  height: 60px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.image-gallery-thumbnail-inner,
+.image-gallery-thumbnail-inner img {
+  height: 100%;
+}
+
+.image-gallery-thumbnail + .image-gallery-thumbnail {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  height: 350px;
 }
