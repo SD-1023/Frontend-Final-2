@@ -28,7 +28,9 @@ export default function DesktopNavbar({ categories }) {
           <SearchContainer />
         </div>
         <Icon className="mr-5" name={"wishlist"} />
+        <Link to={'/signin'}>
         <Icon className="mr-5" name={"profile"} />
+        </Link>
         <Icon name={"bag"} />
       </div>
     </>
