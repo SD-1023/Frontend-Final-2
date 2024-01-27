@@ -84,3 +84,23 @@
 .image-gallery-content .image-gallery-slide .image-gallery-image {
   height: 350px;
 }
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  text-transform: none !important;
+  line-height: 1.25rem;
+  font-size: 1rem !important;
+  font-family: "Inter" !important;
+  border-radius: 0.5rem !important;
+  min-height: unset !important;
+  height: 2rem !important;
+  padding: 0.37rem 1.1rem !important;
+  transition: background 0.3s ease-in-out;
+  margin-right: 1rem !important;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #fff !important;
+  background-color: #1b4b66;
+}
+.MuiTabs-fixed .MuiTabs-indicator {
+  display: none !important;
+}

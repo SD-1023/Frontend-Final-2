@@ -8,7 +8,7 @@ export default function useApi() {
   const [error, setError] = useState(null);
   const [cache, setCache] = useState({});
 
-  const fetchData = async (path, method = "GET", body = null) => {
+  const fetchData = async (path, method = "GET", body = {}) => {
     try {
       setLoading(true);
       setError(null);

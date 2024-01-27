@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import useApi from "../../hooks/useApi";
 import { useParams } from "react-router-dom";
-import ProductContent from "./ProductContent";
-import DesktopGallary from "./Gallary";
+import ProductContent from "./productComponents/ProductContent";
+import DesktopGallary from "./productComponents/Gallary";
 import MyBreadcrumbs from "../../shared-components/MyBreadcrumbs";
+import MobileProductDescription from "./productComponents/description/MobileProductDescription";
+import DesktopProductDescription from "./productComponents/description/DesktopProductDescription";
 
 export default function ProductLayout() {
   const [productData, setProductData] = useState({});
@@ -16,6 +18,7 @@ export default function ProductLayout() {
 
   useEffect(() => {
     setProductData(data?.product);
+    console.log(data?.product);
   }, [data]);
 
   const breadCrumbs = [
@@ -33,14 +36,22 @@ export default function ProductLayout() {
     },
   ];
   return (
-    <div className="p-4">
-      <MyBreadcrumbs pathnames={breadCrumbs} />
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {productData?.productsImages && (
-          <DesktopGallary imagesData={productData.productsImages} />
-        )}
-        {productData && <ProductContent info={productData} />}
+    <>
+      <div className="p-4">
+        <MyBreadcrumbs pathnames={breadCrumbs} />
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {productData?.productsImages && (
+            <DesktopGallary imagesData={productData.productsImages} />
+          )}
+          {productData && <ProductContent info={productData} />}
+        </div>
       </div>
-    </div>
+      {productData?.description && (
+        <>
+          <MobileProductDescription description={productData.description} />
+          <DesktopProductDescription description={productData.description} />
+        </>
+      )}
+    </>
   );
 }
