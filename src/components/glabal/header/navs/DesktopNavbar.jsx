@@ -14,7 +14,7 @@ export default function DesktopNavbar({ categories }) {
             categories.map((categorie) => (
               <Link
                 key={categorie.id}
-                to={`/category/${categorie.id}`}
+                to={`/category/${categorie.name}`}
                 className="mr-5 text-sm font-medium text-color-typeHighEmphasis"
               >
                 {categorie.name}

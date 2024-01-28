@@ -5,17 +5,15 @@ import useApi from "../../hooks/useApi";
 import { useEffect, useState } from "react";
 import MyBreadcrumbs from "../../shared-components/MyBreadcrumbs";
 export default function CategoryLayout() {
-  const [categoryData, setCategoryData] = useState({});
   const [products, setProducts] = useState([]);
-  const { id } = useParams();
+  const { category } = useParams();
   const { get, data } = useApi();
 
   useEffect(() => {
-    get(`/categories/${id}`);
-  }, [get, id]);
+    get(`/products?category=${category}`);
+  }, [get, category]);
   useEffect(() => {
-    setCategoryData(data.category);
-    setProducts(data?.category?.products);
+    setProducts(data?.products);
   }, [data]);
 
   const breadcrumbs = [
@@ -24,7 +22,7 @@ export default function CategoryLayout() {
       path: "/",
     },
     {
-      page: "categoryData.name",
+      page: category,
       path: "#",
     },
   ];
@@ -33,9 +31,7 @@ export default function CategoryLayout() {
     <div className="px-5">
       <Hero />
       <MyBreadcrumbs pathnames={breadcrumbs} />
-      {products && (
-        <ProductsGrid products={products} title={categoryData.name} />
-      )}
+      {products && <ProductsGrid products={products} title={category} />}
     </div>
   );
 }

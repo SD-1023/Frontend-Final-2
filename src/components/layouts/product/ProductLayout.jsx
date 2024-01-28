@@ -18,7 +18,6 @@ export default function ProductLayout() {
 
   useEffect(() => {
     setProductData(data?.product);
-    console.log(data?.product);
   }, [data]);
 
   const breadCrumbs = [
@@ -28,7 +27,7 @@ export default function ProductLayout() {
     },
     {
       page: productData?.category,
-      path: `/category/${productData?.Category__Id}`,
+      path: `/category/${productData?.category}`,
     },
     {
       page: productData?.name,
