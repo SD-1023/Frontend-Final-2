@@ -13,7 +13,7 @@ export default function Card({ product }) {
         src={`${product.image_secure_url}`}
       />
       <div className="relative p-3 pt-4">
-        <h4 className="text-xs md:text-base font-semibold md:font-medium md:leading-5 text-color-typeHighEmphasis">
+        <h4 className="pr-6 text-xs md:text-base font-semibold md:font-medium md:leading-5 text-color-typeHighEmphasis">
           {product.name}
         </h4>
         <Icon
