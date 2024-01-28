@@ -4,14 +4,14 @@ import {
   CssBaseline,
   FormControlLabel,
   Grid,
-  Link,
   TextField,
   Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import useApi from "../../hooks/useApi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {  signUpSchema } from "./Validation";
 
 export default function SignUpPage() {
   // http://161.156.81.77:4000/users
@@ -25,15 +25,18 @@ export default function SignUpPage() {
       email: "",
       password: "",
     },
+    validationSchema: signUpSchema,
     onSubmit: async (values) => {
       let body = {username:values.firstName + values.lastName,email:values.email ,password:values.password}
       post(`/users/signup`,body);
+
     },
   });
   useEffect(()=>{
    if(data?.newUser?.id){
      navigate('/signin');
    }
+  
   },[data])
 
   return (
@@ -57,6 +60,9 @@ export default function SignUpPage() {
                 autoFocus
                 onChange={formik.handleChange}
                 value={formik.values.firstName}
+                onBlur={formik.handleBlur}
+                error={formik.touched.firstName && formik.errors.firstName}
+                helperText={formik.touched.firstName && formik.errors.firstName}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -70,6 +76,9 @@ export default function SignUpPage() {
                 autoComplete="lname"
                 onChange={formik.handleChange}
                 value={formik.values.lastName}
+                onBlur={formik.handleBlur}
+                error={formik.touched.lastName && formik.errors.lastName}
+                helperText={formik.touched.lastName && formik.errors.lastName}
               />
             </Grid>
             <Grid item xs={12}>
@@ -83,6 +92,9 @@ export default function SignUpPage() {
                 autoComplete="email"
                 onChange={formik.handleChange}
                 value={formik.values.email}
+                onBlur={formik.handleBlur}
+                error={formik.touched.email && (formik.errors.email )}
+                helperText={formik.touched.email && (formik.errors.email)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -97,6 +109,9 @@ export default function SignUpPage() {
                 autoComplete="current-password"
                 onChange={formik.handleChange}
                 value={formik.values.password}
+                onBlur={formik.handleBlur}
+                error={formik.touched.password && formik.errors.password}
+                helperText={formik.touched.password && formik.errors.password}
               />
             </Grid>
           </Grid>
@@ -105,7 +120,7 @@ export default function SignUpPage() {
           </Button>
           <Grid container justify="flex-end" className="my-4">
             <Grid item>
-              <Link href="/signin" variant="body2">
+              <Link to={"/signin"} >
                 Already have an account? Sign in
               </Link>
             </Grid>

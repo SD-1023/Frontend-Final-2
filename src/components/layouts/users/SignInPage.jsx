@@ -1,9 +1,10 @@
 import { Copyright } from '@mui/icons-material';
-import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material'
+import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material'
 import { useFormik } from 'formik';
 import React, { useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router';
 import useApi from '../../hooks/useApi';
+import { Link } from 'react-router-dom';
 
 export default function SignInPage() {
     const { post, data } = useApi();
@@ -73,12 +74,12 @@ export default function SignInPage() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to={"#"} variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link to={"/signup"} >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
