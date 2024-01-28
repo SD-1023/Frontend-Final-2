@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router';
 import useApi from '../../hooks/useApi';
 import { Link } from 'react-router-dom';
+import { signInSchema } from './Validation';
 
 export default function SignInPage() {
     const { post, data } = useApi();
@@ -14,13 +15,14 @@ export default function SignInPage() {
       email: "",
       password: "",
     },
+    validationSchema: signInSchema,
     onSubmit: async (values) => {
       let body = {email:values.email ,password:values.password}
       post(`/users/signin`,body);
     },
   });
   useEffect(()=>{
-   if(data?.message === 'Sign in successful'){
+   if(data?.message === 'success'){
     navigate('/')
    }
   },[data])
@@ -50,6 +52,9 @@ export default function SignInPage() {
               autoFocus
               onChange={formik.handleChange}
               value={formik.values.email}
+              onBlur={formik.handleBlur}
+              error={formik.touched.email && (formik.errors.email )}
+              helperText={formik.touched.email && (formik.errors.email)}
             />
             <TextField
               margin="normal"
@@ -62,6 +67,9 @@ export default function SignInPage() {
               autoComplete="current-password"
               onChange={formik.handleChange}
               value={formik.values.password}
+              onBlur={formik.handleBlur}
+              error={formik.touched.password && (formik.errors.password )}
+              helperText={formik.touched.password && (formik.errors.password)}
             />
           
             <Button
