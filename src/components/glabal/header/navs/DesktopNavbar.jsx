@@ -31,7 +31,9 @@ export default function DesktopNavbar({ categories }) {
         <Link to={'/signin'}>
         <Icon className="mr-5" name={"profile"} />
         </Link>
+        <Link to={'/cart'} >
         <Icon name={"bag"} />
+        </Link>
       </div>
     </>
   );
