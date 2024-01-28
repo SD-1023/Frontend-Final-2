@@ -15,7 +15,7 @@ export default function Footer({ categories }) {
                 <Link
                   className="w-fit"
                   key={categorie.id}
-                  to={`/category/${categorie.id}`}
+                  to={`/category/${categorie.name}`}
                 >
                   {categorie.name}
                 </Link>

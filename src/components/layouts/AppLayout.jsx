@@ -12,12 +12,12 @@ import SignInPage from "./users/SignInPage";
 export default function AppLayout() {
   return (
     <div className="bg-color-bright min-h-[100vh]">
-      <BrowserRouter>
+      <BrowserRouter basename="/Frontend-Final-2">
         <CategoriesContext>
           <Header />
           <Routes>
             <Route index element={<HomeLayout />} />
-            <Route path="/category/:id" element={<CategoryLayout />} />
+            <Route path="/category/:category" element={<CategoryLayout />} />
             <Route path="/search/:term" element={<ProductsGrid />} />
             <Route path="/product/:id" element={<ProductLayout />} />
             <Route path="/signup" element={<SignUpPage />} />
