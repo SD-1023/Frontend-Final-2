@@ -25,7 +25,7 @@ export default function AppLayout() {
             <Route path="/checkout" element={<CheckoutLayout />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/signin" element={<SignInPage />} />
-            <Route path="/cart/:user_id" element={<CartLayout /> } />
+            <Route path="/cart" element={<CartLayout /> } />
           </Routes>
           <FooterContainer />
           <BottomNavigation />

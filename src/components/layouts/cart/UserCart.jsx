@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import {
   Paper,
@@ -13,19 +13,10 @@ import {
   styled,
   tableCellClasses,
 } from "@mui/material";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function UserCart() {
-  //   const [Items, setItems] = useState({});
-  //   const { id } = useParams();
-  //   const { get, data } = useApi();
 
-  //   useEffect(() => {
-  //     get(`/cart/${id}`);
-  //   }, [get, id]);
-
-  //   useEffect(() => {
-  //     setItems(data?.cartItems);
-  //   }, [data]);
   const theme = createTheme({
     breakpoints: {
       values: {
@@ -51,7 +42,7 @@ export default function UserCart() {
   }))
 
   return (
-    
+
     <div className="sm:w-7/12 w-full ">
     <TableContainer component={Paper}>
     

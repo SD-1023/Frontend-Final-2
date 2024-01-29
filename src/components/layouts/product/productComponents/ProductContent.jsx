@@ -1,21 +1,46 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Icon from "../../../shared-components/Icon";
+import useApi from "../../../hooks/useApi";
+import { useAuth } from "../../../contexts/AuthContext";
+import { useNavigate } from "react-router";
+import MySnackbar from "../../../shared-components/MySnackbar";
 
-export default function ProductContent({ info }) {
+export default function ProductContent({ productId, info }) {
   const [quantity, setQuantity] = useState(0);
-  // const {id} = useParams();
-  // const { post, data } = useApi();
-  // const [card , setCard] = useState();
-  // useEffect(() => {
-  //     post(`/cart/:id`,{authorizationa:'token'})
-  //   }, [post, id]);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const { post, data } = useApi();
+  const [snackbarState, setSnackbarState] = useState(false);
 
-  // const addToBag = async (id)=>{
-  //     setCard(data);
-  // }
+  const handleAddToCart = () => {
+    if (!user) {
+      navigate("/signin");
+    } else {
+      post(
+        "/cart",
+        {
+          userId: user.userId,
+          quantity: quantity,
+          productId: productId,
+        },
+        user.sessionId
+      );
+    }
+  };
+  useEffect(() => {
+    if (data?.message === "success") {
+      setSnackbarState(true);
+    }
+    console.log(data);
+  }, [data]);
 
   return (
     <div>
+      <MySnackbar
+        open={snackbarState}
+        setOpen={setSnackbarState}
+        messege={"Product added to your cart!"}
+      />
       <div className="py-[0.88rem] md:pl-4 ">
         <h2 className="text-base leading-5 font-medium text-color-typeHighEmphasis ">
           {info.name}
@@ -72,7 +97,10 @@ export default function ProductContent({ info }) {
           </div>
         </div>
         <div className="py-4 md:pt-10 flex md:text-sm gap-2">
-          <button className="rounded-lg flex items-center justify-center bg-color-primary text-color-bright w-full md:w-7/12 py-[0.63rem]">
+          <button
+            onClick={handleAddToCart}
+            className="rounded-lg flex items-center justify-center bg-color-primary text-color-bright w-full md:w-7/12 py-[0.63rem]"
+          >
             <Icon className="whiteSvg mr-2" name={"bag"} />
             Add To Bag
           </button>

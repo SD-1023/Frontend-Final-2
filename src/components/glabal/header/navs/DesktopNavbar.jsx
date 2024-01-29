@@ -1,8 +1,18 @@
 import Icon from "../../../shared-components/Icon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchContainer from "./searchBar/SearchContainer";
+import { useAuth } from "../../../contexts/AuthContext";
 
 export default function DesktopNavbar({ categories }) {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const handleProfileClick = () => {
+    if (user) {
+      alert(`You already signed in ${user.username}`);
+    } else {
+      navigate("/signin");
+    }
+  };
   return (
     <>
       <div className="flex items-center">
@@ -28,10 +38,11 @@ export default function DesktopNavbar({ categories }) {
           <SearchContainer />
         </div>
         <Icon className="mr-5" name={"wishlist"} />
-        <Link to={'/signin'}>
-        <Icon className="mr-5" name={"profile"} />
-        </Link>
-        <Link to={'/cart'} >
+        
+        <div onClick={handleProfileClick}>
+          <Icon className="mr-5" name={"profile"} />
+        </div>
+      <Link to={'/cart'} >
         <Icon name={"bag"} />
         </Link>
       </div>
