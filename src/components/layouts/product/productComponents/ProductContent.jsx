@@ -9,8 +9,9 @@ export default function ProductContent({ productId, info }) {
   const [quantity, setQuantity] = useState(0);
   const { user } = useAuth();
   const navigate = useNavigate();
-  const { post, data } = useApi();
+  const { post, data, error } = useApi();
   const [snackbarState, setSnackbarState] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const handleAddToCart = () => {
     if (!user) {
@@ -30,16 +31,22 @@ export default function ProductContent({ productId, info }) {
   useEffect(() => {
     if (data?.message === "success") {
       setSnackbarState(true);
+      setSnackbarMessage("Product added to your cart!");
     }
-    console.log(data);
   }, [data]);
+  useEffect(() => {
+    if (error) {
+      setSnackbarMessage(error);
+      setSnackbarState(true);
+    }
+  }, [error]);
 
   return (
     <div>
       <MySnackbar
         open={snackbarState}
         setOpen={setSnackbarState}
-        messege={"Product added to your cart!"}
+        messege={snackbarMessage}
       />
       <div className="py-[0.88rem] md:pl-4 ">
         <h2 className="text-base leading-5 font-medium text-color-typeHighEmphasis ">
