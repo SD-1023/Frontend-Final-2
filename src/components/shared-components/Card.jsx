@@ -8,7 +8,7 @@ export default function Card({ product }) {
       className={`relative w-full mr-4 sm:mr-6 md:mr-7 lg:mr-8 rounded-lg overflow-hidden`}
     >
       <img
-        className={`rounded-lg w-[100%] max-h-[9rem] md:max-h-[13rem]`}
+        className={`rounded-lg w-[100%] max-h-[9rem] md:max-h-[13rem] xl:max-h-[22rem] xl:h-[22rem]`}
         alt=""
         src={`${product.image_secure_url}`}
       />

@@ -8,7 +8,7 @@ export default function useApi() {
   const [error, setError] = useState(null);
   const [cache, setCache] = useState({});
 
-  const fetchData = async (path, method = "GET", body = {}) => {
+  const fetchData = async (path, method = "GET", body = {}, token = "") => {
     try {
       setLoading(true);
       setError(null);
@@ -24,6 +24,7 @@ export default function useApi() {
         url: BASE_URL + path,
         headers: {
           "Content-Type": "application/json",
+          Authorization: token,
         },
         data: body,
       };
@@ -46,7 +47,7 @@ export default function useApi() {
   };
 
   const get = (url) => fetchData(url);
-  const post = (url, body) => fetchData(url, "POST", body);
+  const post = (url, body, token) => fetchData(url, "POST", body, token);
 
   return { data, loading, error, get, post };
 }
