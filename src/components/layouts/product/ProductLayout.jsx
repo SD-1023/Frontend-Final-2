@@ -42,7 +42,7 @@ export default function ProductLayout() {
           {productData?.productsImages && (
             <DesktopGallary imagesData={productData.productsImages} />
           )}
-          {productData && <ProductContent info={productData} />}
+          {productData && <ProductContent productId={id} info={productData} />}
         </div>
       </div>
       {productData?.description && (
