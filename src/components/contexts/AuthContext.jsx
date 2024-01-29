@@ -6,7 +6,6 @@ export const AuthProvider = ({ children }) => {
   const LOCAL_DATA_KEY = "userData";
   const { getItem, setItem } = useLocalStorage();
   const [user, setUser] = useState(getItem(LOCAL_DATA_KEY));
-  console.log(user);
 
   const signIn = (newUser, cb) => {
     setUser(newUser); // Set the user state

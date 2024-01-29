@@ -13,12 +13,6 @@ export default function useApi() {
       setLoading(true);
       setError(null);
 
-      if (cache[path]) {
-        setData(cache[path]);
-        setLoading(false);
-        return;
-      }
-
       const config = {
         method,
         url: BASE_URL + path,
@@ -29,18 +23,29 @@ export default function useApi() {
         data: body,
       };
 
-      const response = await axios(config);
-      const result = response.data;
+      if (method !== "GET" || !cache[path]) {
+        const response = await axios(config);
+        console.log(response);
+        const result = response.data;
 
-      // Cache the data
-      setCache((prevCache) => ({
-        ...prevCache,
-        [path]: result,
-      }));
-
-      setData(result);
-    } catch (error) {
-      setError(error.message);
+        // Cache the data
+        setCache((prevCache) => ({
+          ...prevCache,
+          [path]: result,
+        }));
+        setData(result);
+      } else {
+        setData(cache[path]);
+        setLoading(false);
+        return;
+      }
+    } catch (err) {
+      console.log("err", err);
+      let errMsg = "An error occurred";
+      if (err?.response?.data?.error) {
+        errMsg = err.response.data.error;
+      }
+      setError(errMsg);
     } finally {
       setLoading(false);
     }
