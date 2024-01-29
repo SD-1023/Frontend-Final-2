@@ -104,3 +104,8 @@
 .MuiTabs-fixed .MuiTabs-indicator {
   display: none !important;
 }
+
+.css-11xur9t-MuiPaper-root-MuiTableContainer-root{
+  height: fit-content;
+  box-shadow:none !important;
+}

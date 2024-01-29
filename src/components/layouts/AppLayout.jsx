@@ -9,7 +9,8 @@ import ProductsGrid from "../shared-components/productsGrid/ProductsGrid";
 import ProductLayout from "./product/ProductLayout";
 import SignUpPage from "./users/SignUpPage";
 import SignInPage from "./users/SignInPage";
-import Cart from "./cart/Cart.jsx";
+import CheckoutLayout from './checkout/CheckoutLayout'
+import CartLayout from "./cart/CartLayout";
 export default function AppLayout() {
   return (
     <div className="bg-color-bright min-h-[100vh]">
@@ -21,9 +22,10 @@ export default function AppLayout() {
             <Route path="/category/:category" element={<CategoryLayout />} />
             <Route path="/search/:term" element={<ProductsGrid />} />
             <Route path="/product/:id" element={<ProductLayout />} />
+            <Route path="/checkout" element={<CheckoutLayout />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/signin" element={<SignInPage />} />
-            <Route path="/cart/:user_id" element={<Cart /> } />
+            <Route path="/cart/:user_id" element={<CartLayout /> } />
           </Routes>
           <FooterContainer />
           <BottomNavigation />
