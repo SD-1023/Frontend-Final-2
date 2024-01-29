@@ -32,9 +32,9 @@ export default function SignInPage() {
     },
   });
   useEffect(() => {
+    console.log("data", data);
     if (data?.message === "success") {
-      console.log(data);
-      signIn(data.result, () => {
+      signIn({ ...data.userdata, sessionId: data.sessionId }, () => {
         navigate("/");
       });
     }
