@@ -20,21 +20,6 @@ export default function Drawer({ state, setState }) {
   };
   const { categories } = useCategoriesContext();
 
-  const theme = createTheme({
-    breakpoints: {
-      values: {
-        lg: 1024,
-      },
-    },
-  });
-  const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
-    "& .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop, .css-4t3x6l-MuiPaper-root-MuiDrawer-paper":
-      {
-        [theme.breakpoints.up("lg")]: {
-          display: "none",
-        },
-      },
-  }));
   const list = () => (
     <Box
       sx={{
@@ -80,14 +65,13 @@ export default function Drawer({ state, setState }) {
 
   return (
     <div>
-      <StyledSwipeableDrawer
-        theme={theme}
+      <SwipeableDrawer
         open={state}
         onClose={toggleDrawer(false)}
         onOpen={toggleDrawer(true)}
       >
         {list()}
-      </StyledSwipeableDrawer>
+      </SwipeableDrawer>
     </div>
   );
 }

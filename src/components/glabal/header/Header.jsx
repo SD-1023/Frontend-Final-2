@@ -12,7 +12,6 @@ export default function Header() {
 
   const handleSearch = useDebounce((term) => {
     get(`/products?search=${term}`);
-    console.log(data);
   }, 500);
 
   const handleChange = (event) => {
