@@ -23,16 +23,17 @@ export default function useApi() {
         data: body,
       };
 
-      if (method !== "GET" || !cache[path]) {
+      if (method !== "GET" || !cache[path] ) {
         const response = await axios(config);
-        console.log(response);
         const result = response.data;
 
         // Cache the data
-        setCache((prevCache) => ({
-          ...prevCache,
-          [path]: result,
-        }));
+      
+          setCache((prevCache) => ({
+            ...prevCache,
+            [path]: result,
+          }));
+       
         setData(result);
       } else {
         setData(cache[path]);
@@ -53,6 +54,8 @@ export default function useApi() {
 
   const get = (url,token) => fetchData(url,'GET',{},token);
   const post = (url, body, token) => fetchData(url, "POST", body, token);
-  
-  return { data, loading, error, get, post };
+  const deleteReq = (url, body, token) => fetchData(url, "DELETE", body, token);
+  const put = (url, token) => fetchData(url, "PUT",{}, token);
+ 
+  return { data, loading, error, get, post,deleteReq ,put};
 }

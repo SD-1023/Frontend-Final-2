@@ -5,24 +5,68 @@ import OrderDetails from '../checkout/checkoutComponents/summary/OrderDetails';
 import CartButtons from './CartButtons';
 import { useAuth } from '../../contexts/AuthContext';
 import useApi from '../../hooks/useApi';
+import { useNavigate } from 'react-router';
 
 export default function CartLayout() {
 
   const [items, setItems] = useState([]);
-  const { get, data } = useApi();
+  const { get, data:getData } = useApi();
   const {user} = useAuth();
+ 
+  const navigate = useNavigate();
+  const {deleteReq,data:deleteData,error} = useApi();
+
+  const handleRemoveCart = (id) => {
+
+    if (!user) {
+      navigate("/signin");
+    } else {
+      deleteReq(
+        "/cart",
+        {
+          userId: user.userId,
+          productId: id,
+        },
+        user.sessionId
+      )
+    }
+  };
+
+  const updateItemsAfterDeletion = (id)=>{
+    setItems(currentItems => currentItems.filter(item => item.product_id !== id));
+    
+  }
 
   useEffect(() => {
+  
+    if (deleteData?.message === "success") {
+      console.log(deleteData)
+      updateItemsAfterDeletion(deleteData.productId);
+      
+    }
+  }, [deleteData]);
+  useEffect(() => {
+    if (error) {
+      alert("Product already removed!");
+    }
+  }, [error]);
+
+
+
+
+  useEffect(() => {
+
     get(`/cart/${user.userId}`,user.sessionId);
   }, [get,user.userId]);
 
   useEffect(() => {
-    console.log(data)
-    if(data.message === 'success'){
-    setItems(data?.cartItems);
+    if(getData.message === 'success'){
+    setItems(getData?.cartItems);
   }
     
-  }, [data]);
+  }, [getData]);
+
+
 
     const breads = [
         {
@@ -34,6 +78,7 @@ export default function CartLayout() {
           path: "#",
         },
       ];
+
       return (
         <div className="p-4">
           <div className="hidden sm:block">
@@ -44,7 +89,7 @@ export default function CartLayout() {
           </h1>
           {items[0]? (
           <div className="flex sm:flex-row flex-col justify-between ">
-            <UserCart items={items} />
+            <UserCart items={items} handleRemoveCart={handleRemoveCart} />
             <div className='md:w-4/12 sm:w-5/12'  >
             <OrderDetails className='mt-0 ' />
             <CartButtons />
