@@ -1,14 +1,12 @@
-import { useLocation } from "react-router";
 import ProductCard from "./ProductCard";
-import MyBreadcrumbs from "../MyBreadcrumbs";
+import MyPagination from "../MyPagination";
 
-export default function ProductsGrid({ title = null, products }) {
-  let location = useLocation();
-
-  if (!products) {
-    products = location.state?.products;
-  }
-
+export default function ProductsGrid({
+  title = null,
+  products,
+  count,
+  handlePageChange,
+}) {
   return (
     <div className="pb-4">
       {/* <MyBreadcrumbs /> */}
@@ -22,11 +20,21 @@ export default function ProductsGrid({ title = null, products }) {
           ? `${products.length} Products`
           : "No products found!"}
       </span>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[1.5rem] lg:gap-[2.5rem] mt-1">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[1.5rem] mt-1">
         {products?.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+      {Math.ceil(count / 9 > 1) ? (
+        <div className="mt-4 flex justify-center">
+          <MyPagination
+            count={Math.ceil(count / 9)}
+            handlePageChange={handlePageChange}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

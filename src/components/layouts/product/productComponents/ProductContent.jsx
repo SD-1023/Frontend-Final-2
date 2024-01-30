@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import MySnackbar from "../../../shared-components/MySnackbar";
 
 export default function ProductContent({ productId, info }) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const { user } = useAuth();
   const navigate = useNavigate();
   const { post, data, error } = useApi();
@@ -71,7 +71,7 @@ export default function ProductContent({ productId, info }) {
           <div className="rounded h-[1.875rem] w-[4.5rem] flex items-center border border-color-primary">
             <div
               onClick={() => {
-                if (quantity !== 0) {
+                if (quantity !== 1) {
                   setQuantity(quantity - 1);
                 }
               }}
@@ -82,7 +82,9 @@ export default function ProductContent({ productId, info }) {
             <span className="px-1 mt-[.1rem]">{quantity}</span>
             <div
               onClick={() => {
-                setQuantity(quantity + 1);
+                if (quantity < 999) {
+                  setQuantity(quantity + 1);
+                }
               }}
               className=" hover:cursor-pointer"
             >

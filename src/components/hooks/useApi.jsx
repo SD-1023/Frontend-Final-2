@@ -41,7 +41,6 @@ export default function useApi() {
         return;
       }
     } catch (err) {
-      console.log("err", err);
       let errMsg = "An error occurred";
       if (err?.response?.data?.error) {
         errMsg = err.response.data.error;
@@ -52,10 +51,12 @@ export default function useApi() {
     }
   };
 
-  const get = (url,token) => fetchData(url,'GET',{},token);
+  const get = (url, token) => fetchData(url, "GET", {}, token);
   const post = (url, body, token) => fetchData(url, "POST", body, token);
+
   const deleteReq = (url, body, token) => fetchData(url, "DELETE", body, token);
   const put = (url, token) => fetchData(url, "PUT",{}, token);
  
   return { data, loading, error, get, post,deleteReq ,put};
+
 }

@@ -61,8 +61,13 @@ export default function DesktopNavbar({ categories }) {
           <SearchContainer />
         </div>
         <Icon className="mr-5" name={"wishlist"} />
-        
+
+
+        <div className=" hover:cursor-pointer" onClick={handleProfileClick}>
+
+       
         {/* <div onClick={handleProfileClick}>
+
           <Icon className="mr-5" name={"profile"} />
         </div> */}
         <div>
@@ -94,8 +99,8 @@ export default function DesktopNavbar({ categories }) {
         
       </Menu>
         </div>
-      <Link to={'/cart'} >
-        <Icon name={"bag"} />
+        <Link to={"/cart"}>
+          <Icon name={"bag"} />
         </Link>
       </div>
     </>

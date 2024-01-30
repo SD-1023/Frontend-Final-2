@@ -4,7 +4,6 @@ import Icon from "../../shared-components/Icon";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { useCategoriesContext } from "../../contexts/CategoriesContext";
-import { createTheme, styled } from "@mui/material";
 
 export default function Drawer({ state, setState }) {
   const { user } = useAuth();
@@ -50,6 +49,7 @@ export default function Drawer({ state, setState }) {
         </span>
         {categories?.map((categorie) => (
           <Link
+            key={categorie.id}
             to={`/category/${categorie.name}`}
             className="flex items-center justify-between my-[1.13rem]"
           >
