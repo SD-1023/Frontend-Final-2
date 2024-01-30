@@ -20,7 +20,14 @@ export default function AppLayout() {
           <Routes>
             <Route index element={<HomeLayout />} />
             <Route path="/category/:category" element={<CategoryLayout />} />
-            <Route path="/search/:term" element={<ProductsGrid />} />
+            <Route
+              path="/search/:term"
+              element={
+                <div className="p-4">
+                  <ProductsGrid />
+                </div>
+              }
+            />
             <Route path="/product/:id" element={<ProductLayout />} />
             <Route path="/checkout" element={<CheckoutLayout />} />
             <Route path="/signup" element={<SignUpPage />} />

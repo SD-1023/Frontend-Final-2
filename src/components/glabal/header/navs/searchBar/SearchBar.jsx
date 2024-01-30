@@ -18,7 +18,6 @@ const StyledSearchIcon = styled(SearchIcon)(() => ({
   left: "0.2ch",
   position: "absolute",
 }));
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: "100%",
   "& .MuiInputBase-input": {
