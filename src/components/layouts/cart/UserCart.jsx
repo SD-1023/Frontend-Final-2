@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { useAuth } from "../../contexts/AuthContext";
 
-export default function UserCart({items}) {
+export default function UserCart({items,handleRemoveCart}) {
 
   const theme = createTheme({
     breakpoints: {
@@ -94,7 +94,7 @@ export default function UserCart({items}) {
                        </div>
                      </div>
                      <div className="border-t md:border-hidden font-semibold border-color-lightText text-center">
-                       <button className="text-color-primary  md:border-b md:text-color-error md:border-color-error pt-[0.62rem] text-sm">
+                       <button onClick={()=>{handleRemoveCart(item.product_id)}} className="text-color-primary  md:border-b md:text-color-error md:border-color-error pt-[0.62rem] text-sm">
                          Remove
                        </button>
                      </div>
