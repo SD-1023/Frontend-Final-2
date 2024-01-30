@@ -25,7 +25,6 @@ export default function useApi() {
 
       if (method !== "GET" || !cache[path]) {
         const response = await axios(config);
-        console.log(response);
         const result = response.data;
 
         // Cache the data
@@ -40,7 +39,6 @@ export default function useApi() {
         return;
       }
     } catch (err) {
-      console.log("err", err);
       let errMsg = "An error occurred";
       if (err?.response?.data?.error) {
         errMsg = err.response.data.error;
@@ -51,8 +49,8 @@ export default function useApi() {
     }
   };
 
-  const get = (url,token) => fetchData(url,'GET',{},token);
+  const get = (url, token) => fetchData(url, "GET", {}, token);
   const post = (url, body, token) => fetchData(url, "POST", body, token);
-  
+
   return { data, loading, error, get, post };
 }
