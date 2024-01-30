@@ -5,28 +5,18 @@ import { useAuth } from "../../../contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { Button, Menu, MenuItem } from "@mui/material";
 import useApi from "../../../hooks/useApi";
-
 export default function DesktopNavbar({ categories }) {
-  const { user,signOut } = useAuth();
-  const navigate = useNavigate();
-  const {put,data}= useApi();
-  // const handleProfileClick = () => {
-  //   if (user) {
-  //     alert(`You already signed in ${user.username}`);
-  //   } else {
-  //     navigate("/signin");
-  //   }
-  // };
-  const  handleSignOut=()=>{
-    put(`/users/signout`,user.sessionId);
-    console.log(user.sessionId)
-   }
-  useEffect(() => {
-    if(data?.message === 'success'){
-      signOut(()=>{});
-    }
-  }, [data]);
+  const { user, signOut } = useAuth();
+  const { put, data } = useApi();
 
+  const handleSignOut = () => {
+    put(`/users/signout`, user.sessionId);
+  };
+  useEffect(() => {
+    if (data?.message === "success") {
+      signOut(() => {});
+    }
+  }, [data, signOut]);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -35,7 +25,6 @@ export default function DesktopNavbar({ categories }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   return (
     <>
       <div className="flex items-center">
@@ -55,49 +44,53 @@ export default function DesktopNavbar({ categories }) {
             ))}
         </ul>
       </div>
-
       <div className="flex items-center">
         <div className="mr-6 relative">
           <SearchContainer />
         </div>
         <Icon className="mr-5" name={"wishlist"} />
-
-
-        <div className=" hover:cursor-pointer" onClick={handleProfileClick}>
-
-       
         {/* <div onClick={handleProfileClick}>
-
           <Icon className="mr-5" name={"profile"} />
         </div> */}
         <div>
-        <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-      <Icon className="mr-5" name={"profile"} />
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        {user? (
-          <MenuItem onClick={()=>{handleSignOut(); handleClose()}}>Sign Out </MenuItem>
-        ):<div>
-        <MenuItem onClick={handleClose}><Link to={'/signin'}>Sign in</Link> </MenuItem>
-        <MenuItem onClick={handleClose}><Link to={'/signup'}>Sign Up</Link> </MenuItem>
-        </div>}
-        
-        
-      </Menu>
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <Icon className="mr-5" name={"profile"} />
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            {user ? (
+              <MenuItem
+                onClick={() => {
+                  handleSignOut();
+                  handleClose();
+                }}
+              >
+                Sign Out{" "}
+              </MenuItem>
+            ) : (
+              <div>
+                <MenuItem onClick={handleClose}>
+                  <Link to={"/signin"}>Sign in</Link>{" "}
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link to={"/signup"}>Sign Up</Link>{" "}
+                </MenuItem>
+              </div>
+            )}
+          </Menu>
         </div>
         <Link to={"/cart"}>
           <Icon name={"bag"} />
