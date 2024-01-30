@@ -1,6 +1,6 @@
-export default function OrderDetails() {
+export default function OrderDetails({className}) {
   return (
-    <div className="mt-6 sm:mt-12">
+    <div className={` ${className?className:'mt-6 sm:mt-12'}`} >
       <h1 className="w-full mb-8 text-left pb-3 mt-3 text-base sm:text-xl leading-[1.625rem] font-semibold text-color-dark border-b border-[#E1E1E1]">
         Order Details
       </h1>

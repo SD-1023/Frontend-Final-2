@@ -17,7 +17,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 export default function SignInPage() {
   const { post, data } = useApi();
-  const { signIn } = useAuth(); // Use the context
+  const { signIn } = useAuth(); 
 
   const navigate = useNavigate();
   const formik = useFormik({

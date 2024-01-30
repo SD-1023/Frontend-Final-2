@@ -51,8 +51,8 @@ export default function useApi() {
     }
   };
 
-  const get = (url) => fetchData(url);
+  const get = (url,token) => fetchData(url,'GET',{},token);
   const post = (url, body, token) => fetchData(url, "POST", body, token);
-
+  
   return { data, loading, error, get, post };
 }
