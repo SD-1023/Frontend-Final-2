@@ -1,74 +1,69 @@
-import React, { useEffect, useState } from 'react'
-import useApi from '../../../../hooks/useApi';
-import { useAuth } from '../../../../contexts/AuthContext';
-import { Button, Menu, MenuItem } from '@mui/material';
-import Icon from '../../../../shared-components/Icon';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import useApi from "../../../../hooks/useApi";
+import { useAuth } from "../../../../contexts/AuthContext";
+import { Button, Menu, MenuItem } from "@mui/material";
+import Icon from "../../../../shared-components/Icon";
+import { Link } from "react-router-dom";
 
 export default function WishList() {
-
-    const [wish,SetWish] =useState([]);
-    const {get,data}= useApi();
-  const {user} =useAuth();
-  const [anchorE2, setAnchorE2] = useState(null); 
+  const [wish, SetWish] = useState([]);
+  const { get, data } = useApi();
+  const { user } = useAuth();
+  const [anchorE2, setAnchorE2] = useState(null);
   const open2 = Boolean(anchorE2);
 
-
-
-   useEffect(()=>{
-    get(`/wishlist/${user.userId}`,user.sessionId);
-   },[])
-
-   useEffect(()=>{
-   
-    if (data?.message === "success") {
-        SetWish(data)
+  useEffect(() => {
+    if (user) {
+      get(`/wishlist/${user.userId}`, user.sessionId);
     }
-   },[data])
+  }, []);
 
-   const handleClose = () => {
+  useEffect(() => {
+    if (data?.message === "success") {
+      SetWish(data);
+    }
+  }, [data]);
+
+  const handleClose = () => {
     setAnchorE2(null);
   };
 
   return (
-     <div>
-          <Button
-            id="basic-button"
-            aria-controls={open2 ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open2 ? "true" : undefined}
-            onClick={(e)=>{setAnchorE2(e.currentTarget)}}
-          >
-            <Icon className="mr-5" name={"wishlist"} /> 
-          </Button>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorE2}
-            open={open2}
-            onClose={(e)=>{setAnchorE2(null)}}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
+    <div>
+      <Button
+        id="basic-button"
+        aria-controls={open2 ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open2 ? "true" : undefined}
+        onClick={(e) => {
+          setAnchorE2(e.currentTarget);
+        }}
+      >
+        <Icon className="mr-5" name={"wishlist"} />
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorE2}
+        open={open2}
+        onClose={(e) => {
+          setAnchorE2(null);
+        }}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        {user ? (
+          <MenuItem
+            onClick={() => {
+              handleClose();
             }}
           >
-            {user ? (
-              <MenuItem
-                onClick={() => {
-               
-                  handleClose();
-                }}
-              >
-          
-                      <li
-             
-              className="bg-color-accent hover:cursor-pointer shadow-md border-b last:border-b-0 border-color-lightText hover:bg-color-grey"
-            >
-              <Link
-                to={``}
-              >
+            <li className="bg-color-accent hover:cursor-pointer shadow-md border-b last:border-b-0 border-color-lightText hover:bg-color-grey">
+              <Link to={``}>
                 <div className="flex items-center p-3">
                   <img
                     className="w-[3.5rem] max-h-[3.3rem] rounded-md mr-2"
-                    src=''
+                    src=""
                     alt=""
                   />
                   <div className="flex flex-col text-color-typeHighEmphasis">
@@ -78,19 +73,18 @@ export default function WishList() {
                 </div>
               </Link>
             </li>
-          
-              </MenuItem>
-            ) : (
-              <div>
-                <MenuItem onClick={handleClose}>
-                  <Link to={"/signin"}>Sign in</Link>{" "}
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Link to={"/signup"}>Sign Up</Link>{" "}
-                </MenuItem>
-              </div>
-            )}
-          </Menu>
-        </div>
-  )
+          </MenuItem>
+        ) : (
+          <div>
+            <MenuItem onClick={handleClose}>
+              <Link to={"/signin"}>Sign in</Link>{" "}
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link to={"/signup"}>Sign Up</Link>{" "}
+            </MenuItem>
+          </div>
+        )}
+      </Menu>
+    </div>
+  );
 }

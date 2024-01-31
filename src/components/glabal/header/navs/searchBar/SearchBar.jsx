@@ -61,26 +61,28 @@ export default function SearchBar() {
       //     setSuggestions([]);
       //   }, 300);
       // }}
-      className="relative flex mr-2 p-1 rounded-lg sm:bg-color-grey"
+      className="sm:relative flex mr-2 p-1 rounded-lg sm:bg-color-grey"
     >
-      <StyledSearchIcon className="text-color-primary" />
-      <StyledInputBase
-        theme={theme}
-        placeholder="Search for products or brands....."
-        inputProps={{ "aria-label": "search" }}
-        sx={{
-          fontWeight: 500,
-          fontSize: "0.875rem",
-        }}
-        onFocus={() => {
-          setShowSuggestions(true);
-        }}
-        value={searchTerm}
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      />
-      <ul className="absolute z-10 w-full right-0 top-10 rounded-lg overflow-hidden">
+      <div className="relative">
+        <StyledSearchIcon className="text-color-primary" />
+        <StyledInputBase
+          theme={theme}
+          placeholder="Search for products or brands....."
+          inputProps={{ "aria-label": "search" }}
+          sx={{
+            fontWeight: 500,
+            fontSize: "0.875rem",
+          }}
+          onFocus={() => {
+            setShowSuggestions(true);
+          }}
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+      </div>
+      <ul className="absolute top-14 right-[2.5vw] sm:mx-0 z-10 w-[95vw] sm:w-full sm:right-0 sm:top-10 rounded-lg overflow-hidden">
         {showSuggestions &&
           searchTerm !== "" &&
           suggestions?.slice(0, 4).map((suggestion) => (
