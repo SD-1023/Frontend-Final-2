@@ -88,3 +88,7 @@
 .Mui-expanded {
   min-height: unset;
 }
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+  padding:0 !important; 
+}

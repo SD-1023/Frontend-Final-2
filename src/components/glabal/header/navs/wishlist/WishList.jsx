@@ -16,13 +16,16 @@ export default function WishList() {
 
 
    useEffect(()=>{
-    get(`/wishlist/${user.userId}`,user.sessionId);
+    if(user){
+        get(`/wishlist/${user.userId}`,user.sessionId);
+    }
+   
    },[])
 
    useEffect(()=>{
    
     if (data?.message === "success") {
-        SetWish(data)
+        SetWish(data.wishlist)
     }
    },[data])
 
@@ -39,7 +42,7 @@ export default function WishList() {
             aria-expanded={open2 ? "true" : undefined}
             onClick={(e)=>{setAnchorE2(e.currentTarget)}}
           >
-            <Icon className="mr-5" name={"wishlist"} /> 
+            <Icon name={"wishlist"} /> 
           </Button>
           <Menu
             id="basic-menu"
@@ -57,6 +60,7 @@ export default function WishList() {
                   handleClose();
                 }}
               >
+                 {wish?.map((wishItem)=>(
           
                       <li
              
@@ -68,17 +72,17 @@ export default function WishList() {
                 <div className="flex items-center p-3">
                   <img
                     className="w-[3.5rem] max-h-[3.3rem] rounded-md mr-2"
-                    src=''
+                    src={wishItem.image_secure_url}
                     alt=""
                   />
                   <div className="flex flex-col text-color-typeHighEmphasis">
-                    <span className="text-sm">name</span>
-                    <span className="text-xs">my wishlist</span>
+                    <span className="text-sm">{wishItem.name}</span>
+                    <span className="text-xs">{wishItem.category}</span>
                   </div>
                 </div>
               </Link>
             </li>
-          
+                   ))}
               </MenuItem>
             ) : (
               <div>
