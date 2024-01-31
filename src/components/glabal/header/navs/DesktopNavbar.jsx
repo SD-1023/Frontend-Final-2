@@ -10,13 +10,7 @@ export default function DesktopNavbar({ categories }) {
   const { user,signOut } = useAuth();
   const navigate = useNavigate();
   const {put,data}= useApi();
-  // const handleProfileClick = () => {
-  //   if (user) {
-  //     alert(`You already signed in ${user.username}`);
-  //   } else {
-  //     navigate("/signin");
-  //   }
-  // };
+
   const  handleSignOut=()=>{
     put(`/users/signout`,user.sessionId);
     console.log(user.sessionId)
@@ -61,10 +55,7 @@ export default function DesktopNavbar({ categories }) {
           <SearchContainer />
         </div>
         <Icon className="mr-5" name={"wishlist"} />
-        
-        {/* <div onClick={handleProfileClick}>
-          <Icon className="mr-5" name={"profile"} />
-        </div> */}
+
         <div>
         <Button
         id="basic-button"

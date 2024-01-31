@@ -82,10 +82,10 @@ export default function UserCart({items,handleRemoveCart}) {
                              </button>
                              <div className="flex gap-[0.37rem] md:hidden">
                                <p className=" md:pr-[3.69rem] text-color-typeHighEmphasis text-sm font-semibold md:font-normal">
-                                 ${item.product_price}
+                                 ${item.finalPrice}
                                </p>
                                <p className="leading-[1.3rem] text-color-typeLowEmphasis font-medium text-[0.625rem]">
-                               ${item.finalPrice}
+                               ${item.product_price}
                                </p>
                                <p className=" text-color-error">20% OFF</p>
                              </div>
@@ -100,9 +100,9 @@ export default function UserCart({items,handleRemoveCart}) {
                      </div>
                    </TableCell>
               
-                 <StyledTableCell theme={theme} align="right">${item.product_price}</StyledTableCell>
+                 <StyledTableCell theme={theme} align="right">${item.finalPrice}</StyledTableCell>
                    <StyledTableCell theme={theme} align="right">{item.quantity}</StyledTableCell>
-                   <StyledTableCell theme={theme} align="right">${item.product_price * item.quantity}</StyledTableCell>
+                   <StyledTableCell theme={theme} align="right">${item.finalPrice * item.quantity}</StyledTableCell>
        
                  </TableRow>
           ) )}

@@ -44,6 +44,7 @@ export default function SignInPage() {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
+          mb: 12,
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
@@ -110,7 +111,7 @@ export default function SignInPage() {
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
+ 
     </Container>
   );
 }

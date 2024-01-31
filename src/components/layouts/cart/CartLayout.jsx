@@ -7,10 +7,8 @@ import { useAuth } from '../../contexts/AuthContext';
 import useApi from '../../hooks/useApi';
 import { useNavigate } from 'react-router';
 
-export default function CartLayout() {
+export default function CartLayout({items,setItems}) {
 
-  const [items, setItems] = useState([]);
-  const { get, data:getData } = useApi();
   const {user} = useAuth();
  
   const navigate = useNavigate();
@@ -53,21 +51,6 @@ export default function CartLayout() {
 
 
 
-
-  useEffect(() => {
-
-    get(`/cart/${user.userId}`,user.sessionId);
-  }, [get,user.userId]);
-
-  useEffect(() => {
-    if(getData.message === 'success'){
-    setItems(getData?.cartItems);
-  }
-    
-  }, [getData]);
-
-
-
     const breads = [
         {
           page: "Home",
@@ -91,7 +74,7 @@ export default function CartLayout() {
           <div className="flex sm:flex-row flex-col justify-between ">
             <UserCart items={items} handleRemoveCart={handleRemoveCart} />
             <div className='md:w-4/12 sm:w-5/12'  >
-            <OrderDetails className='mt-0 ' />
+            <OrderDetails className='mt-0 ' items={items} />
             <CartButtons />
             </div>
           </div>

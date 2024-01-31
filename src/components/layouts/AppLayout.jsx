@@ -11,7 +11,31 @@ import SignUpPage from "./users/SignUpPage";
 import SignInPage from "./users/SignInPage";
 import CheckoutLayout from './checkout/CheckoutLayout'
 import CartLayout from "./cart/CartLayout";
+import { useEffect, useState } from "react";
+import useApi from "../hooks/useApi";
+import { useAuth } from "../contexts/AuthContext";
 export default function AppLayout() {
+  const [items, setItems] = useState([]);
+  const { get, data } = useApi();
+  const {user} = useAuth();
+
+
+  useEffect(() => {
+
+   
+    if(user){
+      get(`/cart/${user.userId}`,user.sessionId);
+    }
+  }, [get,user]);
+
+  useEffect(() => {
+    if(data.message === 'success'){
+    setItems(data?.cartItems);
+    console.log(cartItems)
+  }
+    
+  }, [data]);
+
   return (
     <div className="bg-color-bright min-h-[100vh]">
       <BrowserRouter basename="/Frontend-Final-2">
@@ -29,10 +53,10 @@ export default function AppLayout() {
               }
             />
             <Route path="/product/:id" element={<ProductLayout />} />
-            <Route path="/checkout" element={<CheckoutLayout />} />
+            <Route path="/checkout" element={<CheckoutLayout items={items} />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/signin" element={<SignInPage />} />
-            <Route path="/cart" element={<CartLayout /> } />
+            <Route path="/cart" element={<CartLayout items={items} setItems={setItems}/> } />
           </Routes>
           <FooterContainer />
           <BottomNavigation />
