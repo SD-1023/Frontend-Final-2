@@ -1,4 +1,3 @@
-import { Copyright } from "@mui/icons-material";
 import {
   Box,
   Button,

@@ -2,8 +2,7 @@ import MyBreadcrumbs from "../../shared-components/MyBreadcrumbs";
 import CheckoutForm from "./checkoutComponents/checkoutForm/CheckoutForm";
 import OrderSummary from "./checkoutComponents/summary/OrderSummary";
 
-export default function CheckoutLayout({items}) {
-
+export default function CheckoutLayout({ items }) {
   const breads = [
     {
       page: "Home",

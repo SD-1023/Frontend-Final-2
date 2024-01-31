@@ -37,7 +37,7 @@ export default function useApi() {
         setData(result);
       } else {
         setData(cache[path]);
-        // setLoading(false);
+        setLoading(false);
         return;
       }
     } catch (err) {
