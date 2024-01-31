@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const CategoriesProvider = createContext({});
 
 export default function CategoriesContext({ children }) {
-  const { data, get } = useApi();
+  const { data, get, loading } = useApi();
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     get("/categories");
@@ -12,7 +12,7 @@ export default function CategoriesContext({ children }) {
   }, [data, get]);
 
   return (
-    <CategoriesProvider.Provider value={{ categories }}>
+    <CategoriesProvider.Provider value={{ categories, loading }}>
       {children}
     </CategoriesProvider.Provider>
   );

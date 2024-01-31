@@ -30,10 +30,10 @@ export default function Footer({ categories }) {
         <div>
           <div className="flex flex-row md:justify-end text-color-bright pb-3">
             <Icon name={"location"} />
-            <p className="pl-2">United States</p>
+            <p className="pl-2">Palestine</p>
           </div>
           <p className="text-color-lightText pl-1 md:whitespace-pre">
-            &copy; 2021 | Cora Leviene All Rights Reserved
+            &copy; 2024 | Cora Leviene All Rights Reserved
           </p>
         </div>
       </div>

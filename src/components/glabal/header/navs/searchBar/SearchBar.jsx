@@ -50,14 +50,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchBar() {
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const {
-    suggestions,
-    onSuggestionClick,
-    setSearchTerm,
-    handleEnterPress,
-    searchTerm,
-    setSuggestions,
-  } = useSearch();
+  const { suggestions, onSuggestionClick, setSearchTerm, searchTerm } =
+    useSearch();
 
   return (
     <div
@@ -84,9 +78,6 @@ export default function SearchBar() {
         value={searchTerm}
         onChange={(event) => {
           setSearchTerm(event.target.value);
-        }}
-        onKeyDown={(e) => {
-          handleEnterPress(e);
         }}
       />
       <ul className="absolute z-10 w-full right-0 top-10 rounded-lg overflow-hidden">

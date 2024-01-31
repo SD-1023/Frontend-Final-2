@@ -11,14 +11,14 @@ import SignUpPage from "./users/SignUpPage";
 import SignInPage from "./users/SignInPage";
 import CheckoutLayout from "./checkout/CheckoutLayout";
 import CartLayout from "./cart/CartLayout";
-import SearchProductsGrid from "../shared-components/productsGrid/SearchProductsGrid";
-import SearchProvider from "../contexts/SearchContext";
+import SearchContext from "../contexts/SearchContext";
 export default function AppLayout() {
   return (
     <div className="bg-color-bright flex flex-col justify-between min-h-[100vh]">
       <BrowserRouter basename="/Frontend-Final-2">
-        <CategoriesContext>
-          <SearchProvider>
+        <SearchContext>
+          {" "}
+          <CategoriesContext>
             <div>
               <Header />
               <Routes>
@@ -27,14 +27,6 @@ export default function AppLayout() {
                   path="/category/:category"
                   element={<CategoryLayout />}
                 />
-                <Route
-                  path="/search"
-                  element={
-                    <div className="p-4">
-                      <SearchProductsGrid />
-                    </div>
-                  }
-                />
                 <Route path="/product/:id" element={<ProductLayout />} />
                 <Route path="/checkout" element={<CheckoutLayout />} />
                 <Route path="/signup" element={<SignUpPage />} />
@@ -42,10 +34,11 @@ export default function AppLayout() {
                 <Route path="/cart" element={<CartLayout />} />
               </Routes>
             </div>
+
             <FooterContainer />
             <BottomNavigation />
-          </SearchProvider>
-        </CategoriesContext>
+          </CategoriesContext>{" "}
+        </SearchContext>
       </BrowserRouter>
     </div>
   );

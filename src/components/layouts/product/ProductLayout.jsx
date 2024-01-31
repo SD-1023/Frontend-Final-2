@@ -10,7 +10,7 @@ import DesktopProductDescription from "./productComponents/description/DesktopPr
 export default function ProductLayout({ children }) {
   const [productData, setProductData] = useState({});
   const { id } = useParams();
-  const { get, data } = useApi();
+  const { get, data, loading } = useApi();
 
   useEffect(() => {
     get(`/products/${id}`);
