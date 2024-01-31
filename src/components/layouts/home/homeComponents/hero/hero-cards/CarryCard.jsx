@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Icon from "../../../../../shared-components/Icon";
 
 export default function CarryCard({ IMG_PATH }) {
@@ -13,10 +14,13 @@ export default function CarryCard({ IMG_PATH }) {
         <p className="text-color-primary text-xs font-medium leading-4 sm:text-[1.14rem] md:text-[1.37rem] lg:text-[1.75rem] sm:leading-[1.2rem] md:leading-[1.775rem] lg:leading-[2.375rem]">
           Trendy handbags collection for your party animal
         </p>
-        <button className="hidden w-fit text-color-bright bg-color-primary md:flex px-[2.34rem] py-[0.75rem] rounded-lg mt-[1.94rem]">
+        <Link
+          to={"/category/Handbags"}
+          className="hidden w-fit text-color-bright bg-color-primary md:flex px-[2.34rem] py-[0.75rem] rounded-lg mt-[1.94rem]"
+        >
           <Icon className={"mr-2"} name={"arrow"} />
           See more
-        </button>
+        </Link>
       </div>
     </div>
   );

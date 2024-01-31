@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import useApi from "../../hooks/useApi";
+
 import {
   Paper,
   Table,
@@ -13,10 +11,9 @@ import {
   styled,
   tableCellClasses,
 } from "@mui/material";
-import { useAuth } from "../../contexts/AuthContext";
 
-export default function UserCart({items,handleRemoveCart}) {
 
+export default function UserCart({ items, handleRemoveCart }) {
   const theme = createTheme({
     breakpoints: {
       values: {
@@ -26,38 +23,39 @@ export default function UserCart({items,handleRemoveCart}) {
       },
     },
   });
- 
 
-  const StyledTableCell = styled(TableCell)(({theme})=>({
-   [ `&.${tableCellClasses.head}`]:{
-    [theme.breakpoints.down('md')]: {
-      display: 'none',
-    }
-  },
-  [ `&.${tableCellClasses.body}`]:{
-    [theme.breakpoints.down('md')]: {
-      display: 'none',
-    }
-  }
-  }))
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      [theme.breakpoints.down("md")]: {
+        display: "none",
+      },
+    },
+    [`&.${tableCellClasses.body}`]: {
+      [theme.breakpoints.down("md")]: {
+        display: "none",
+      },
+    },
+  }));
 
   return (
-
     <div className="sm:w-7/12 w-full ">
-    <TableContainer component={Paper}>
-    
-      <Table aria-label="simple table">
-    
-          <TableHead  >
-            
+      <TableContainer component={Paper}>
+        <Table aria-label="simple table">
+          <TableHead>
             <TableRow>
-              <StyledTableCell theme={theme} >Product Name</StyledTableCell>
-              <StyledTableCell theme={theme} align="right">Price</StyledTableCell>
-              <StyledTableCell theme={theme} align="right">Qty</StyledTableCell>
-              <StyledTableCell theme={theme} align="right">Sub Total</StyledTableCell>
+              <StyledTableCell theme={theme}>Product Name</StyledTableCell>
+              <StyledTableCell theme={theme} align="right">
+                Price
+              </StyledTableCell>
+              <StyledTableCell theme={theme} align="right">
+                Qty
+              </StyledTableCell>
+              <StyledTableCell theme={theme} align="right">
+                Sub Total
+              </StyledTableCell>
             </TableRow>
-          
           </TableHead>
+
        
         <TableBody>
           {items?.map((item)=>(
@@ -110,6 +108,8 @@ export default function UserCart({items,handleRemoveCart}) {
         </TableBody>
       </Table>
     </TableContainer>
+
+
     </div>
   );
 }

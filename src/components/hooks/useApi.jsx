@@ -23,21 +23,21 @@ export default function useApi() {
         data: body,
       };
 
-      if (method !== "GET" || !cache[path] ) {
+      if (method !== "GET" || !cache[path]) {
         const response = await axios(config);
         const result = response.data;
 
         // Cache the data
-      
-          setCache((prevCache) => ({
-            ...prevCache,
-            [path]: result,
-          }));
-       
+
+        setCache((prevCache) => ({
+          ...prevCache,
+          [path]: result,
+        }));
+
         setData(result);
       } else {
         setData(cache[path]);
-        setLoading(false);
+        // setLoading(false);
         return;
       }
     } catch (err) {
@@ -47,7 +47,7 @@ export default function useApi() {
       }
       setError(errMsg);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -55,8 +55,7 @@ export default function useApi() {
   const post = (url, body, token) => fetchData(url, "POST", body, token);
 
   const deleteReq = (url, body, token) => fetchData(url, "DELETE", body, token);
-  const put = (url, token) => fetchData(url, "PUT",{}, token);
- 
-  return { data, loading, error, get, post,deleteReq ,put};
+  const put = (url, token) => fetchData(url, "PUT", {}, token);
 
+  return { data, loading, error, get, post, deleteReq, put };
 }

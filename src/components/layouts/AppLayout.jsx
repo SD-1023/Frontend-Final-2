@@ -11,9 +11,13 @@ import SignUpPage from "./users/SignUpPage";
 import SignInPage from "./users/SignInPage";
 import CheckoutLayout from "./checkout/CheckoutLayout";
 import CartLayout from "./cart/CartLayout";
+
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import useApi from "../hooks/useApi";
+import SearchContext from "../contexts/SearchContext";
+
+
 export default function AppLayout() {
   const [items, setItems] = useState([]);
   const { get, data } = useApi();
@@ -39,6 +43,8 @@ export default function AppLayout() {
   return (
     <div className="bg-color-bright flex flex-col justify-between min-h-[100vh]">
       <BrowserRouter basename="/Frontend-Final-2">
+
+          <SearchContext>
         <CategoriesContext>
           <Header />
           <Routes>
@@ -61,6 +67,11 @@ export default function AppLayout() {
           <FooterContainer />
           <BottomNavigation />
         </CategoriesContext>
+
+      
+
+        </SearchContext>
+
       </BrowserRouter>
     </div>
   );
