@@ -20,6 +20,12 @@ export default function WishList() {
 
   useEffect(() => {
     if (data?.message === "success") {
+      SetWish(data.wishlist);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (data?.message === "success") {
       SetWish(data);
     }
   }, [data]);
@@ -39,7 +45,7 @@ export default function WishList() {
           setAnchorE2(e.currentTarget);
         }}
       >
-        <Icon className="mr-5" name={"wishlist"} />
+        <Icon name={"wishlist"} />
       </Button>
       <Menu
         id="basic-menu"
@@ -58,21 +64,25 @@ export default function WishList() {
               handleClose();
             }}
           >
-            <li className="bg-color-accent hover:cursor-pointer shadow-md border-b last:border-b-0 border-color-lightText hover:bg-color-grey">
-              <Link to={``}>
-                <div className="flex items-center p-3">
-                  <img
-                    className="w-[3.5rem] max-h-[3.3rem] rounded-md mr-2"
-                    src=""
-                    alt=""
-                  />
-                  <div className="flex flex-col text-color-typeHighEmphasis">
-                    <span className="text-sm">name</span>
-                    <span className="text-xs">my wishlist</span>
-                  </div>
-                </div>
-              </Link>
-            </li>
+            {
+            // wish?.map((wishItem) => (
+            //   <li className="bg-color-accent hover:cursor-pointer shadow-md border-b last:border-b-0 border-color-lightText hover:bg-color-grey">
+            //     <Link to={``}>
+            //       <div className="flex items-center p-3">
+            //         <img
+            //           className="w-[3.5rem] max-h-[3.3rem] rounded-md mr-2"
+            //           src={wishItem.image_secure_url}
+            //           alt=""
+            //         />
+            //         <div className="flex flex-col text-color-typeHighEmphasis">
+            //           <span className="text-sm">{wishItem.name}</span>
+            //           <span className="text-xs">{wishItem.category}</span>
+            //         </div>
+            //       </div>
+            //     </Link>
+            //   </li>
+            // ))
+            }
           </MenuItem>
         ) : (
           <div>
