@@ -12,7 +12,7 @@ export default function CartLayout({items,setItems}) {
   const {user} = useAuth();
  
   const navigate = useNavigate();
-  const {deleteReq,data:deleteData,error} = useApi();
+  const {deleteReq,data,error} = useApi();
 
   const handleRemoveCart = (id) => {
 
@@ -37,12 +37,12 @@ export default function CartLayout({items,setItems}) {
 
   useEffect(() => {
   
-    if (deleteData?.message === "success") {
-      console.log(deleteData)
-      updateItemsAfterDeletion(deleteData.productId);
+    if (data?.message === "success") {
+      console.log(data)
+      updateItemsAfterDeletion(data.productId);
       
     }
-  }, [deleteData]);
+  }, [data]);
   useEffect(() => {
     if (error) {
       alert("Product already removed!");
@@ -70,7 +70,7 @@ export default function CartLayout({items,setItems}) {
           <h1 className="text-[1.5rem] sm:text-[2.125rem] mb-[2.5rem] font-semibold leading-[2.75rem] text-color-primary">
             My Cart
           </h1>
-          {items[0]? (
+          {items ? (
           <div className="flex sm:flex-row flex-col justify-between ">
             <UserCart items={items} handleRemoveCart={handleRemoveCart} />
             <div className='md:w-4/12 sm:w-5/12'  >

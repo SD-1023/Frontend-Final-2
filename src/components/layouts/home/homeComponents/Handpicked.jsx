@@ -3,10 +3,14 @@ import CollectionCard from "../../../shared-components/Collection";
 
 export default function Handpicked() {
   const collections = [
-    { image: "personalCare.jpg", title: "Personal Care" },
-    { image: "handbag.jpg", title: "Handbags" },
-    { image: "watch.jpg", title: "Wrist Watches" },
-    { image: "sunglass.jpg", title: "Sunglasses" },
+    {
+      image: "personalCare.png",
+      title: "Personal Care",
+      path: "/category/Skincare",
+    },
+    { image: "handbag.png", title: "Handbags", path: "/category/Handbags" },
+    { image: "watch.png", title: "Wrist Watches", path: "/category/Watches" },
+    { image: "sunglass.png", title: "Sunglasses", path: "/category/Eyewear" },
   ];
   return (
     <div className="bg-color-primary p-4 sm:p-5 md:pt-8">
@@ -19,6 +23,7 @@ export default function Handpicked() {
             key={collection.title}
             image={collection.image}
             title={collection.title}
+            path={collection.path}
           />
         ))}
       </div>

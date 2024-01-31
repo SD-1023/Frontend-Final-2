@@ -9,34 +9,39 @@ export default function CheckoutForm() {
   const [expanded, setExpanded] = useState(false);
   const {post,data,error} = useApi();
   const {user} = useAuth();
+  const [order,setOrder] = useState([]);
+
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const placeOrder = () => {
-
+  useEffect(()=>{
     if (!user) {
       navigate("/signin");
     } else {
       post(
-        `/orders/${user.userId}`,{},
+        `/orders/${user.userId}`,
+        {},
         user.sessionId
       )
-      console.log(user.userId)
+   
     }
+  },[post])
 
+  const placeOrder = () => {
+    console.log(data)
+    setOrder('order');
   };
-  useEffect(() => {
-    
-    if (data?.message === "success") {
-      console.log(data)
-      alert("Your Order Is Ready!");
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data)
+  //   if (data?.message === "success") {
+  //     setOrder('Order done')
+  //   }
+  // }, [data]);
   useEffect(() => {
     if (error) {
-      alert("No Items To Order!");
+      setOrder('error')
     }
   }, [error]);
 
@@ -53,7 +58,7 @@ export default function CheckoutForm() {
         </Link>
         <Link
         onClick={placeOrder}
-          
+          order={order}
           className="text-color-bright rounded-lg bg-color-primary py-[0.6rem] px-[1.25rem] sm:px-[3.25rem]"
         >
           Place order

@@ -7,7 +7,7 @@ import MyBreadcrumbs from "../../shared-components/MyBreadcrumbs";
 import MobileProductDescription from "./productComponents/description/MobileProductDescription";
 import DesktopProductDescription from "./productComponents/description/DesktopProductDescription";
 
-export default function ProductLayout() {
+export default function ProductLayout({ children }) {
   const [productData, setProductData] = useState({});
   const { id } = useParams();
   const { get, data } = useApi();

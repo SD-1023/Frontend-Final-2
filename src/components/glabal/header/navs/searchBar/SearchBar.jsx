@@ -2,6 +2,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
+import { Link } from "react-router-dom";
+import { useSearch } from "../../../../contexts/SearchContext";
+import { useState } from "react";
 
 const theme = createTheme({
   breakpoints: {
@@ -45,13 +48,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar({ searchTerm, setSearchTerm, handleChange }) {
-  const handleEnterPress = (e) => {
-    if (e.key === "Enter") {
-    }
-  };
+export default function SearchBar() {
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const {
+    suggestions,
+    onSuggestionClick,
+    setSearchTerm,
+    handleEnterPress,
+    searchTerm,
+    setSuggestions,
+  } = useSearch();
+
   return (
-    <div className="relative flex mr-2 p-1 rounded-lg sm:bg-color-grey">
+    <div
+      // onBlur={() => {
+      //   setShowSuggestions(false);
+      //   setTimeout(() => {
+      //     setSuggestions([]);
+      //   }, 300);
+      // }}
+      className="relative flex mr-2 p-1 rounded-lg sm:bg-color-grey"
+    >
       <StyledSearchIcon className="text-color-primary" />
       <StyledInputBase
         theme={theme}
@@ -61,12 +78,46 @@ export default function SearchBar({ searchTerm, setSearchTerm, handleChange }) {
           fontWeight: 500,
           fontSize: "0.875rem",
         }}
+        onFocus={() => {
+          setShowSuggestions(true);
+        }}
         value={searchTerm}
-        onChange={handleChange}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
         onKeyDown={(e) => {
           handleEnterPress(e);
         }}
       />
+      <ul className="absolute z-10 w-full right-0 top-10 rounded-lg overflow-hidden">
+        {showSuggestions &&
+          searchTerm !== "" &&
+          suggestions?.slice(0, 4).map((suggestion) => (
+            <li
+              key={suggestion.id}
+              className="bg-color-accent hover:cursor-pointer shadow-md border-b last:border-b-0 border-color-lightText hover:bg-color-grey"
+            >
+              <Link
+                to={`/product/${suggestion.id}`}
+                onClick={() => onSuggestionClick(suggestion.id)}
+                key={suggestion.id}
+                className=""
+              >
+                <div className="flex items-center p-3">
+                  <img
+                    className="w-[3.5rem] max-h-[3.3rem] rounded-md mr-2"
+                    src={suggestion.image_secure_url}
+                    alt=""
+                  />
+                  <div className="flex flex-col text-color-typeHighEmphasis">
+                    <span className="text-sm">{suggestion.name}</span>
+                    <span className="text-xs">{suggestion.category}</span>
+                  </div>
+                </div>
+              </Link>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 }
