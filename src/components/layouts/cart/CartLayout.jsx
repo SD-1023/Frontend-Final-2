@@ -6,12 +6,13 @@ import CartButtons from "./CartButtons";
 import { useAuth } from "../../contexts/AuthContext";
 import useApi from "../../hooks/useApi";
 import { useNavigate } from "react-router";
+import Loader from "../../shared-components/Loader";
 
 export default function CartLayout({ items, setItems }) {
   const { user } = useAuth();
 
   const navigate = useNavigate();
-  const { deleteReq, data, error } = useApi();
+  const { deleteReq, data, error, loading } = useApi();
 
   const breads = [
     {
@@ -59,7 +60,7 @@ export default function CartLayout({ items, setItems }) {
 
   return (
     <div className="p-4 relative">
-      {
+      {!loading ? (
         <>
           <div className="hidden sm:block">
             <MyBreadcrumbs pathnames={breads} />
@@ -91,7 +92,11 @@ export default function CartLayout({ items, setItems }) {
             </div>
           )}
         </>
-      }
+      ) : (
+        <div className="flex justify-center">
+          <Loader />
+        </div>
+      )}
     </div>
   );
 }

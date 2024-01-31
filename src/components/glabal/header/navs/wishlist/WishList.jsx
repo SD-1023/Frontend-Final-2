@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import useApi from '../../../../hooks/useApi';
-import { useAuth } from '../../../../contexts/AuthContext';
-import { Button, Menu, MenuItem } from '@mui/material';
-import Icon from '../../../../shared-components/Icon';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import useApi from "../../../../hooks/useApi";
+import { useAuth } from "../../../../contexts/AuthContext";
+import { Button, Menu, MenuItem } from "@mui/material";
+import Icon from "../../../../shared-components/Icon";
+import { Link } from "react-router-dom";
 
 export default function WishList() {
-
-    const [wish,SetWish] =useState([]);
-    const {get,data}= useApi();
-  const {user} =useAuth();
-  const [anchorE2, setAnchorE2] = useState(null); 
+  const [wish, SetWish] = useState([]);
+  const { get, data } = useApi();
+  const { user } = useAuth();
+  const [anchorE2, setAnchorE2] = useState(null);
   const open2 = Boolean(anchorE2);
 
 
@@ -26,14 +25,23 @@ export default function WishList() {
    
     if (data?.message === "success") {
         SetWish(data.wishlist)
-    }
-   },[data])
 
-   const handleClose = () => {
+
+    }
+  }, []);
+
+  useEffect(() => {
+    if (data?.message === "success") {
+      SetWish(data);
+    }
+  }, [data]);
+
+  const handleClose = () => {
     setAnchorE2(null);
   };
 
   return (
+
      <div>
           <Button
             id="basic-button"
@@ -82,6 +90,7 @@ export default function WishList() {
                 </div>
               </Link>
             </li>
+
                    ))}
               </MenuItem>
             ) : (
@@ -97,4 +106,5 @@ export default function WishList() {
           </Menu>
         </div>
   )
+
 }
