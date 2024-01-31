@@ -2,7 +2,8 @@ import MyBreadcrumbs from "../../shared-components/MyBreadcrumbs";
 import CheckoutForm from "./checkoutComponents/checkoutForm/CheckoutForm";
 import OrderSummary from "./checkoutComponents/summary/OrderSummary";
 
-export default function CheckoutLayout() {
+export default function CheckoutLayout({items}) {
+
   const breads = [
     {
       page: "Home",
@@ -23,7 +24,7 @@ export default function CheckoutLayout() {
       </h1>
       <div className="flex sm:flex-row flex-col-reverse justify-between">
         <CheckoutForm />
-        <OrderSummary />
+        <OrderSummary items={items} />
       </div>
     </div>
   );

@@ -7,13 +7,25 @@ import { useAuth } from "../../contexts/AuthContext";
 import useApi from "../../hooks/useApi";
 import { useNavigate } from "react-router";
 
-export default function CartLayout() {
-  const [items, setItems] = useState([]);
-  const { get, data: getData } = useApi();
-  const { user } = useAuth();
 
+export default function CartLayout({items,setItems}) {
+
+  const {user} = useAuth();
+ 
   const navigate = useNavigate();
-  const { deleteReq, data: deleteData, error } = useApi();
+  const {deleteReq,data,error} = useApi();
+
+  const breads = [
+    {
+      page: "Home",
+      path: "/",
+    },
+    {
+      page: "cart",
+      path: "#",
+    },
+  ];
+
 
   const handleRemoveCart = (id) => {
     if (!user) {
@@ -37,37 +49,22 @@ export default function CartLayout() {
   };
 
   useEffect(() => {
-    if (deleteData?.message === "success") {
-      console.log(deleteData);
-      updateItemsAfterDeletion(deleteData.productId);
-    }
-  }, [deleteData]);
+
+  
+    if (data?.message === "success") {
+      console.log(data)
+      updateItemsAfterDeletion(data.productId);
+  }}, [data]);
+
+
   useEffect(() => {
     if (error) {
       alert("Product already removed!");
     }
   }, [error]);
 
-  useEffect(() => {
-    get(`/cart/${user.userId}`, user.sessionId);
-  }, [get, user.userId]);
 
-  useEffect(() => {
-    if (getData.message === "success") {
-      setItems(getData?.cartItems);
-    }
-  }, [getData]);
 
-  const breads = [
-    {
-      page: "Home",
-      path: "/",
-    },
-    {
-      page: "Cart",
-      path: "#",
-    },
-  ];
 
   return (
     <div className="p-4">
@@ -82,6 +79,7 @@ export default function CartLayout() {
           <UserCart items={items} handleRemoveCart={handleRemoveCart} />
           <div className="md:w-4/12 sm:w-5/12">
             <OrderDetails className="mt-0 " />
+
             <CartButtons />
           </div>
         </div>

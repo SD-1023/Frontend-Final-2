@@ -10,6 +10,7 @@ export default function ProductContent({ productId, info }) {
   const { user } = useAuth();
   const navigate = useNavigate();
   const { post, data, error } = useApi();
+  const { post:wishPost, data:wishData, error:wishError } = useApi();
   const [snackbarState, setSnackbarState] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
@@ -40,6 +41,35 @@ export default function ProductContent({ productId, info }) {
       setSnackbarState(true);
     }
   }, [error]);
+
+
+
+  const handleAddToWishList = () => {
+    if (!user) {
+      navigate("/signin");
+    } else {
+      wishPost(
+        "/wishlist/",
+        {
+          userId: user.userId,
+          productId: productId,
+        },
+        user.sessionId
+      );
+    }
+  };
+  useEffect(() => {
+    if (wishData?.message === "success") {
+      setSnackbarState(true);
+      setSnackbarMessage("Product added to your wishList!");
+    }
+  }, [wishData]);
+  useEffect(() => {
+    if (wishError) {
+      setSnackbarMessage(wishError);
+      setSnackbarState(true);
+    }
+  }, [wishError]);
 
   return (
     <div>
@@ -113,7 +143,9 @@ export default function ProductContent({ productId, info }) {
             <Icon className="whiteSvg mr-2" name={"bag"} />
             Add To Bag
           </button>
-          <button className="rounded-lg hidden md:flex items-center justify-center border border-color-primary w-5/12">
+          <button
+          onClick={handleAddToWishList}
+          className="rounded-lg hidden md:flex items-center justify-center border border-color-primary w-5/12">
             <Icon className="mr-2 w-6" name={"wishlist"} />
             <span className="leading-6 font-semibold text-color-primary">
               Add To WishList

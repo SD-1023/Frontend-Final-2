@@ -40,19 +40,21 @@ export default function SignInPage() {
   }, [data, navigate, signIn]);
 
   return (
-    <>
-      <Container component="main" maxWidth="xs">
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
+
+    <Container component="main" maxWidth="xs">
+      <Box
+        sx={{
+          mb: 12,
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+
           <Box
             component="form"
             onSubmit={formik.handleSubmit}
@@ -107,8 +109,8 @@ export default function SignInPage() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </>
+
+    </Container>
+
   );
 }

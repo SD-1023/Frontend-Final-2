@@ -1,8 +1,11 @@
 import Icon from "../../../shared-components/Icon";
 import { Link } from "react-router-dom";
 import SearchContainer from "./searchBar/SearchContainer";
+import WishList from "./wishlist/WishList";
 import ProfileIcon from "../../../shared-components/ProfileIcon";
 export default function DesktopNavbar({ categories }) {
+
+
   return (
     <>
       <div className="flex items-center">
@@ -26,8 +29,12 @@ export default function DesktopNavbar({ categories }) {
         <div className="mr-6 relative">
           <SearchContainer />
         </div>
-        <Icon className="mr-1" name={"wishlist"} />
+
+  
+        <WishList />
+
         <ProfileIcon />
+
         <Link to={"/cart"}>
           <Icon name={"bag"} />
         </Link>

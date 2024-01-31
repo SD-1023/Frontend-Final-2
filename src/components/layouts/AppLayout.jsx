@@ -11,34 +11,67 @@ import SignUpPage from "./users/SignUpPage";
 import SignInPage from "./users/SignInPage";
 import CheckoutLayout from "./checkout/CheckoutLayout";
 import CartLayout from "./cart/CartLayout";
+
+import { useEffect, useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import useApi from "../hooks/useApi";
 import SearchContext from "../contexts/SearchContext";
+
+
 export default function AppLayout() {
+  const [items, setItems] = useState([]);
+  const { get, data } = useApi();
+  const {user} = useAuth();
+
+
+  useEffect(() => {
+
+  if(user){
+      get(`/cart/${user.userId}`,user.sessionId);
+  }
+  }, [get,user]);
+
+  useEffect(() => {
+
+    if(data?.message === 'success'){
+    setItems(data.cartItems);
+    
+  }
+    
+  }, [data]);
+
   return (
     <div className="bg-color-bright flex flex-col justify-between min-h-[100vh]">
       <BrowserRouter basename="/Frontend-Final-2">
-        <SearchContext>
-          {" "}
-          <CategoriesContext>
-            <div>
-              <Header />
-              <Routes>
-                <Route index element={<HomeLayout />} />
-                <Route
-                  path="/category/:category"
-                  element={<CategoryLayout />}
-                />
-                <Route path="/product/:id" element={<ProductLayout />} />
-                <Route path="/checkout" element={<CheckoutLayout />} />
-                <Route path="/signup" element={<SignUpPage />} />
-                <Route path="/signin" element={<SignInPage />} />
-                <Route path="/cart" element={<CartLayout />} />
-              </Routes>
-            </div>
 
-            <FooterContainer />
-            <BottomNavigation />
-          </CategoriesContext>{" "}
+          <SearchContext>
+        <CategoriesContext>
+          <Header />
+          <Routes>
+            <Route index element={<HomeLayout />} />
+            <Route path="/category/:category" element={<CategoryLayout />} />
+            <Route
+              path="/search/:term"
+              element={
+                <div className="p-4">
+                  <ProductsGrid />
+                </div>
+              }
+            />
+            <Route path="/product/:id" element={<ProductLayout />} />
+            <Route path="/checkout" element={<CheckoutLayout items={items} />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/cart" element={<CartLayout items={items} setItems={setItems} /> } />
+          </Routes>
+          <FooterContainer />
+          <BottomNavigation />
+        </CategoriesContext>
+
+      
+
         </SearchContext>
+
       </BrowserRouter>
     </div>
   );
