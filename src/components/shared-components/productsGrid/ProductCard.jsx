@@ -8,7 +8,7 @@ export default function ProductCard({ product }) {
       className={`relative flex justify-between flex-col shadow-xl rounded-lg overflow-hidden`}
     >
       <img
-        className={`rounded-lg h-[8rem] sm:h-[14rem] xl:h-[22rem]`}
+        className={` object-contain rounded-lg h-[8rem] sm:h-[11rem] xl:h-[22rem]`}
         alt={product.name}
         src={`${product.image_secure_url}`}
       />

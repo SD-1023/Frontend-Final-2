@@ -2,7 +2,6 @@ import {
   Button,
   Container,
   CssBaseline,
-  FormControlLabel,
   Grid,
   TextField,
   Typography,
@@ -11,33 +10,33 @@ import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import useApi from "../../hooks/useApi";
 import { Link, useNavigate } from "react-router-dom";
-import {  signUpSchema } from "./Validation";
+import { signUpSchema } from "./Validation";
 
 export default function SignUpPage() {
-  // http://161.156.81.77:4000/users
-  // http://161.156.81.77:4000/users/signin
   const { post, data } = useApi();
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      firstName:"",
-      lastName:"",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
     },
     validationSchema: signUpSchema,
     onSubmit: async (values) => {
-      let body = {username:values.firstName + values.lastName,email:values.email ,password:values.password}
-      post(`/users/signup`,body);
-
+      let body = {
+        username: values.firstName + values.lastName,
+        email: values.email,
+        password: values.password,
+      };
+      post(`/users/signup`, body);
     },
   });
-  useEffect(()=>{
-   if(data?.newUser?.id){
-     navigate('/signin');
-   }
-  
-  },[data])
+  useEffect(() => {
+    if (data?.newUser?.id) {
+      navigate("/signin");
+    }
+  }, [data, navigate]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -93,8 +92,8 @@ export default function SignUpPage() {
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 onBlur={formik.handleBlur}
-                error={formik.touched.email && (formik.errors.email )}
-                helperText={formik.touched.email && (formik.errors.email)}
+                error={formik.touched.email && formik.errors.email}
+                helperText={formik.touched.email && formik.errors.email}
               />
             </Grid>
             <Grid item xs={12}>
@@ -120,9 +119,7 @@ export default function SignUpPage() {
           </Button>
           <Grid container justify="flex-end" className="my-4">
             <Grid item>
-              <Link to={"/signin"} >
-                Already have an account? Sign in
-              </Link>
+              <Link to={"/signin"}>Already have an account? Sign in</Link>
             </Grid>
           </Grid>
         </form>
