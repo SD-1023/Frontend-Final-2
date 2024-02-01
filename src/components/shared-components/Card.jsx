@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
+import { useWishlistContext } from "../contexts/WishlistContext";
 
 export default function Card({ product }) {
+  const { addToWishList, isProductAdded } = useWishlistContext();
   return (
     <Link
       to={`/product/${product.id}`}
       className={`relative w-full mr-4 sm:mr-6 md:mr-7 lg:mr-8 rounded-lg overflow-hidden`}
     >
       <img
-        className={` object-contain rounded-lg w-[100%] min-h-[9rem] max-h-[9rem] md:max-h-[13rem] xl:max-h-[22rem] xl:h-[22rem]`}
+        className={` object-contain rounded-lg w-[100%] min-h-[9rem] max-h-[9rem] md:h-[15rem] xl:max-h-[22rem] xl:h-[22rem]`}
         alt=""
         src={`${product.image_secure_url}`}
       />
@@ -16,10 +18,19 @@ export default function Card({ product }) {
         <h4 className="pr-6 text-xs md:text-base font-semibold md:font-medium md:leading-5 text-color-typeHighEmphasis">
           {product.name}
         </h4>
-        <Icon
-          className="absolute pt-4 right-0 top-0 md:bottom-[2.8rem] w-5 mr-3 md:w-6"
-          name="heart"
-        />
+
+        {isProductAdded ? (
+          <Icon
+            className="absolute pt-4 right-0 top-0 md:bottom-[2.8rem] w-5 mr-3 md:w-6"
+            name="heart"
+          />
+        ) : (
+          <Icon
+            className="absolute pt-4 right-0 top-0 md:bottom-[2.8rem] w-5 mr-3 md:w-6"
+            name="filled-heart"
+          />
+        )}
+
         <p className="text-xs md:text-sm leading-4 md:leading-5 text-color-typeLowEmphasis">
           {product.category}
         </p>

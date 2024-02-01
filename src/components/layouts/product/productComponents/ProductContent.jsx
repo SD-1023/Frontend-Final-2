@@ -4,13 +4,13 @@ import useApi from "../../../hooks/useApi";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router";
 import MySnackbar from "../../../shared-components/MySnackbar";
+import Buttons from "./Buttons";
 
 export default function ProductContent({ productId, info }) {
   const [quantity, setQuantity] = useState(1);
   const { user } = useAuth();
   const navigate = useNavigate();
   const { post, data, error } = useApi();
-  const { post:wishPost, data:wishData, error:wishError } = useApi();
   const [snackbarState, setSnackbarState] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
@@ -41,35 +41,6 @@ export default function ProductContent({ productId, info }) {
       setSnackbarState(true);
     }
   }, [error]);
-
-
-
-  const handleAddToWishList = () => {
-    if (!user) {
-      navigate("/signin");
-    } else {
-      wishPost(
-        "/wishlist/",
-        {
-          userId: user.userId,
-          productId: productId,
-        },
-        user.sessionId
-      );
-    }
-  };
-  useEffect(() => {
-    if (wishData?.message === "success") {
-      setSnackbarState(true);
-      setSnackbarMessage("Product added to your wishList!");
-    }
-  }, [wishData]);
-  useEffect(() => {
-    if (wishError) {
-      setSnackbarMessage(wishError);
-      setSnackbarState(true);
-    }
-  }, [wishError]);
 
   return (
     <div>
@@ -135,23 +106,7 @@ export default function ProductContent({ productId, info }) {
             </p>
           </div>
         </div>
-        <div className="py-4 md:pt-10 flex md:text-sm gap-2">
-          <button
-            onClick={handleAddToCart}
-            className="rounded-lg flex items-center justify-center bg-color-primary text-color-bright w-full md:w-7/12 py-[0.63rem]"
-          >
-            <Icon className="whiteSvg mr-2" name={"bag"} />
-            Add To Bag
-          </button>
-          <button
-          onClick={handleAddToWishList}
-          className="rounded-lg hidden md:flex items-center justify-center border border-color-primary w-5/12">
-            <Icon className="mr-2 w-6" name={"wishlist"} />
-            <span className="leading-6 font-semibold text-color-primary">
-              Add To WishList
-            </span>
-          </button>
-        </div>
+        <Buttons handleAddToCart={handleAddToCart} productId={productId} />
       </div>
     </div>
   );
