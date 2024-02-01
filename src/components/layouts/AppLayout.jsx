@@ -25,33 +25,35 @@ export default function AppLayout() {
         <SearchContext>
           <WishlistContext>
             <CategoriesContext>
-              <Header />
-              <Routes>
-                <Route index element={<HomeLayout />} />
-                <Route
-                  path="/category/:category"
-                  element={<CategoryLayout />}
-                />
-                <Route
-                  path="/search/:term"
-                  element={
-                    <div className="p-4">
-                      <ProductsGrid />
-                    </div>
-                  }
-                />
-                <Route path="/product/:id" element={<ProductLayout />} />
-                <Route
-                  path="/checkout"
-                  element={<CheckoutLayout items={items} />}
-                />
-                <Route path="/signup" element={<SignUpPage />} />
-                <Route path="/signin" element={<SignInPage />} />
-                <Route
-                  path="/cart"
-                  element={<CartLayout items={items} setItems={setItems} />}
-                />
-              </Routes>
+              <div>
+                <Header />
+                <Routes>
+                  <Route index element={<HomeLayout />} />
+                  <Route
+                    path="/category/:category"
+                    element={<CategoryLayout />}
+                  />
+                  <Route
+                    path="/search/:term"
+                    element={
+                      <div className="p-4">
+                        <ProductsGrid />
+                      </div>
+                    }
+                  />
+                  <Route path="/product/:id" element={<ProductLayout />} />
+                  <Route
+                    path="/checkout"
+                    element={<CheckoutLayout items={items} />}
+                  />
+                  <Route path="/signup" element={<SignUpPage />} />
+                  <Route path="/signin" element={<SignInPage />} />
+                  <Route
+                    path="/cart"
+                    element={<CartLayout items={items} setItems={setItems} />}
+                  />
+                </Routes>
+              </div>
               <FooterContainer />
               <BottomNavigation />
             </CategoriesContext>

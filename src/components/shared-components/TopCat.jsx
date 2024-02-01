@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function TopCat({ id, title, imgPath }) {
+export default function TopCat({ title, imgPath }) {
   return (
-    <Link className="min-w-[3.9rem]" to={`/category/${id}`}>
+    <Link className="min-w-[3.9rem]" to={`/category/${title}`}>
       <div className={`text-center flex-shrink-0`}>
         <div className="w-full h-full rounded-lg flex justify-center bg-color-accent py-3">
           <img className="" alt="" src={`${imgPath}`} />
