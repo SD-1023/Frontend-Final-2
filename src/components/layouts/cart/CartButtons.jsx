@@ -1,10 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CartButtons() {
+export default function CartButtons({ items }) {
   return (
     <div className="flex md:flex-row flex-col justify-between w-full">
-      <Link className="mb-3" to={"/checkout"}>
+      <Link to={"/checkout"} className="mb-3">
         <button className="text-color-bright w-full  py-[0.62rem] font-semibold bg-color-primary rounded-lg px-4 text-center text-sm">
           Proceed to Checkout
         </button>

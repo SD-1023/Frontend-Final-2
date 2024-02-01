@@ -47,7 +47,7 @@ export default function useApi() {
       }
       setError(errMsg);
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 

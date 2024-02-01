@@ -10,20 +10,11 @@ const StyledAccordion = styled(Accordion)(() => ({
   borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
   borderRadius: "0px",
 }));
-export default function AddressAccordion({ handleChange, expanded }) {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = {
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-      email: formData.get("email"),
-      mobileNumber: formData.get("mobileNumber"),
-      location: formData.get("location"),
-    };
-    console.log(data); // Process the form data as needed
-  };
-
+export default function AddressAccordion({
+  handleChange,
+  expanded,
+  setFormData,
+}) {
   return (
     <div className="w-full pt-[2px] sm:mb-16">
       <StyledAccordion
@@ -47,7 +38,7 @@ export default function AddressAccordion({ handleChange, expanded }) {
         </AccordionSummary>
         <AccordionDetails>
           <Container component="main" maxWidth="sm">
-            <form onSubmit={handleSubmit} noValidate={false}>
+            <form noValidate={false}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -58,6 +49,14 @@ export default function AddressAccordion({ handleChange, expanded }) {
                     id="firstName"
                     label="First Name"
                     autoFocus
+                    onChange={(event) => {
+                      setFormData((formData) => {
+                        return {
+                          ...formData,
+                          firstName: event.target.value,
+                        };
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -68,6 +67,14 @@ export default function AddressAccordion({ handleChange, expanded }) {
                     label="Last Name"
                     name="lastName"
                     autoComplete="lname"
+                    onChange={(event) => {
+                      setFormData((formData) => {
+                        return {
+                          ...formData,
+                          lastName: event.target.value,
+                        };
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -89,6 +96,14 @@ export default function AddressAccordion({ handleChange, expanded }) {
                     name="mobileNumber"
                     autoComplete="tel"
                     maxRows={5}
+                    onChange={(event) => {
+                      setFormData((formData) => {
+                        return {
+                          ...formData,
+                          mobileNumber: event.target.value,
+                        };
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12}>

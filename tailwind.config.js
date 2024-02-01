@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require("./src/css/colors");
+const colors = require("./src/tailwindcss/colors");
 const IMAGES_PATH = "/assets/images/";
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
